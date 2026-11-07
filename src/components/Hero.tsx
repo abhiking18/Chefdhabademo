@@ -86,9 +86,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder, onExploreMenu }) => {
                 </div>
               </div>
 
-              <div className="hidden sm:block text-xs text-[#8C4A38] font-medium">
-                Fresh Charcoal Tandoor · Open till 11:30 PM
-              </div>
+              <a
+                href="#gallery"
+                className="inline-flex items-center gap-2 text-xs text-[#541E29] font-bold hover:text-[#D99035] transition-colors bg-[#FAF4EB] py-1.5 px-3 rounded-full border border-[#E7D5BB] shadow-sm"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#2E7D32]" />
+                <span>See Real Dhaba Premises & Thatched Cabins →</span>
+              </a>
             </div>
 
           </div>

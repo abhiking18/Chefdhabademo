@@ -8,7 +8,8 @@ import {
   MessageCircle,
   Sparkles,
   Users,
-  UtensilsCrossed
+  UtensilsCrossed,
+  CheckCircle2
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
@@ -54,8 +55,46 @@ export const LocationContact: React.FC<LocationContactProps> = ({ onOpenOrder })
           </h2>
 
           <p className="text-base sm:text-lg text-[#4A362D]">
-            Visit us in Rangia, Assam for fresh rotis, hearty gravies, and authentic Indian hospitality.
+            Look for our illuminated red signboard right along the highway in Rangia, Assam — spacious parking for cars, bikes & buses.
           </p>
+        </div>
+
+        {/* Real Entrance Signboard Card Preview */}
+        <div className="mb-12 relative rounded-[32px_16px_32px_16px] overflow-hidden border-4 border-[#E7D5BB] shadow-xl bg-[#34251F]">
+          <div className="grid grid-cols-1 md:grid-cols-12 items-center">
+            <div className="md:col-span-7 relative aspect-[16/9] md:aspect-auto md:h-80 overflow-hidden">
+              <img
+                src="/assets/aistudio/unnamed_98627df7.jpg"
+                alt="New Highway Chef Dhaba illuminated signboard and entrance at night"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-transparent to-transparent" />
+              <div className="absolute top-4 left-4 bg-[#D99035] text-[#34251F] font-bold text-xs px-3 py-1 rounded-full shadow flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#34251F]" />
+                <span>Verified Entrance View</span>
+              </div>
+            </div>
+
+            <div className="md:col-span-5 p-6 sm:p-8 bg-[#541E29] text-[#F5E9D5] flex flex-col justify-center h-full">
+              <span className="text-xs uppercase tracking-widest font-bold text-[#D99035] mb-1">
+                Official Highway Landmark
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-[#F5E9D5] mb-2">
+                A Complete Family Restaurant
+              </h3>
+              <p className="text-xs sm:text-sm text-[#E7D5BB] leading-relaxed mb-4">
+                Easily spot our glowing red signage from the road. Enjoy ample parking, fast service, comfortable outdoor and indoor seating, and fresh tandoori food prepared hot on arrival.
+              </p>
+              <div className="flex items-center gap-3">
+                <span className="px-3 py-1 rounded-full bg-[#3E161E] border border-[#D99035]/30 text-xs text-[#D99035] font-semibold">
+                  VEG & NON-VEG
+                </span>
+                <span className="text-xs text-[#E7D5BB]">Closes 11:30 PM</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 2-Column Split: Info Card & Curved Embedded Map */}
@@ -97,7 +136,7 @@ export const LocationContact: React.FC<LocationContactProps> = ({ onOpenOrder })
                   </div>
                   <a
                     href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-                    className="px-3 py-1.5 rounded-full bg-[#541E29] text-[#F5E9D5] text-xs font-semibold hover:bg-[#3E161E] transition-colors"
+                    className="px-3.5 py-1.5 rounded-full bg-[#541E29] text-[#F5E9D5] text-xs font-semibold hover:bg-[#3E161E] transition-colors"
                   >
                     Call
                   </a>
