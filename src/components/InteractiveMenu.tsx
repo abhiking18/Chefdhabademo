@@ -3,11 +3,17 @@ import { Search, Plus, Check, UtensilsCrossed, CheckCircle2 } from 'lucide-react
 import { MENU_CATEGORIES, INITIAL_MENU_ITEMS, MenuItem } from '../data/restaurantData';
 
 interface InteractiveMenuProps {
+  items?: MenuItem[];
   onAddToCart: (dish: { id: string; name: string; price: number }) => void;
   onOpenOrder: (dishName?: string) => void;
 }
 
-export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ onAddToCart, onOpenOrder }) => {
+export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({
+  items,
+  onAddToCart,
+  onOpenOrder
+}) => {
+  const currentList = items && items.length > 0 ? items : INITIAL_MENU_ITEMS;
   const [activeCategory, setActiveCategory] = useState<string>('All Items');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [dietaryFilter, setDietaryFilter] = useState<'all' | 'veg' | 'non-veg'>('all');
@@ -15,7 +21,7 @@ export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ onAddToCart, o
 
   // Filter items
   const filteredItems = useMemo(() => {
-    return INITIAL_MENU_ITEMS.filter((item) => {
+    return currentList.filter((item) => {
       // Category match
       const matchesCategory =
         activeCategory === 'All Items' || item.category === activeCategory;

@@ -158,6 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
                   <UtensilsCrossed className="w-4 h-4 text-[#D99035]" />
                   <span>Order Now {cartCount > 0 ? `(${cartCount} items)` : ''}</span>
                 </button>
+
                 <a
                   href={`tel:${RESTAURANT_INFO.phoneRaw}`}
                   className="w-full py-2.5 px-4 rounded-full border border-[#541E29] text-[#541E29] font-medium text-center text-sm flex items-center justify-center gap-2"

@@ -2,7 +2,13 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, X, Maximize2, Camera, CheckCircle2, Sparkles } from 'lucide-react';
 import { GALLERY_ITEMS, GalleryItem } from '../data/restaurantData';
 
-export const FoodGallery: React.FC = () => {
+interface FoodGalleryProps {
+  items?: GalleryItem[];
+  onOpenAdmin?: () => void;
+}
+
+export const FoodGallery: React.FC<FoodGalleryProps> = ({ items, onOpenAdmin }) => {
+  const currentList = items && items.length > 0 ? items : GALLERY_ITEMS;
   const [activeFilter, setActiveFilter] = useState<string>('All Photos');
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
@@ -16,9 +22,9 @@ export const FoodGallery: React.FC = () => {
   ];
 
   const visibleItems = useMemo(() => {
-    if (activeFilter === 'All Photos') return GALLERY_ITEMS;
-    return GALLERY_ITEMS.filter((item) => item.category === activeFilter);
-  }, [activeFilter]);
+    if (activeFilter === 'All Photos') return currentList;
+    return currentList.filter((item) => item.category === activeFilter);
+  }, [activeFilter, currentList]);
 
   // Keyboard navigation for lightbox
   useEffect(() => {

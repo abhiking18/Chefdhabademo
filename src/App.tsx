@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { OurStory } from './components/OurStory';
@@ -12,10 +12,47 @@ import { LocationContact } from './components/LocationContact';
 import { Footer } from './components/Footer';
 import { OrderModal, CartItem } from './components/OrderModal';
 import { BackToTop } from './components/BackToTop';
+import { AdminPanel } from './components/AdminPanel';
+import {
+  fetchGalleryPhotos,
+  fetchMenuItems,
+  logCustomerOrder
+} from './services/supabaseService';
+import { GalleryItem, MenuItem, GALLERY_ITEMS, INITIAL_MENU_ITEMS } from './data/restaurantData';
 
 export default function App() {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+  const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  // Supabase Dynamic Data States
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(GALLERY_ITEMS);
+  const [menuItems, setMenuItems] = useState<MenuItem[]>(INITIAL_MENU_ITEMS);
+  const [isLiveFromSupabase, setIsLiveFromSupabase] = useState(false);
+
+  // Load from Supabase on mount
+  const loadSupabaseData = useCallback(async () => {
+    try {
+      const [galleryRes, menuRes] = await Promise.all([
+        fetchGalleryPhotos(),
+        fetchMenuItems()
+      ]);
+
+      if (galleryRes.items && galleryRes.items.length > 0) {
+        setGalleryItems(galleryRes.items);
+      }
+      if (menuRes.items && menuRes.items.length > 0) {
+        setMenuItems(menuRes.items);
+      }
+      setIsLiveFromSupabase(galleryRes.isLive || menuRes.isLive);
+    } catch (err) {
+      console.warn('Using default restaurant data', err);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadSupabaseData();
+  }, [loadSupabaseData]);
 
   // Add item to cart
   const handleAddToCart = (dish: { id: string; name: string; price: number }) => {
@@ -58,13 +95,13 @@ export default function App() {
   // Open order modal optionally adding a specific dish
   const handleOpenOrder = (selectedDishName?: string) => {
     if (selectedDishName) {
-      // Check if already in cart
       const exists = cart.some((item) => item.name === selectedDishName);
       if (!exists) {
+        const found = menuItems.find((m) => m.name === selectedDishName);
         handleAddToCart({
           id: `quick-${Date.now()}`,
           name: selectedDishName,
-          price: selectedDishName.includes('Egg') ? 170 : 240,
+          price: found ? found.price : (selectedDishName.includes('Egg') ? 110 : 200),
         });
       }
     }
@@ -81,9 +118,9 @@ export default function App() {
   const cartTotalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#F5E9D5] text-[#34251F] font-sans selection:bg-[#D99035]/30 selection:text-[#541E29] flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#F5E9D5] text-[#34251F] font-sans selection:bg-[#D99035]/30 selection:text-[#541E29] flex flex-col relative">
       
-      {/* 1. Sticky Navigation Bar */}
+      {/* 1. Sticky Navigation Bar (Clean Customer Experience) */}
       <Navbar
         onOpenOrder={() => setIsOrderModalOpen(true)}
         cartCount={cartTotalItems}
@@ -105,8 +142,9 @@ export default function App() {
           onOpenOrder={handleOpenOrder}
         />
 
-        {/* 5. Complete Interactive Menu */}
+        {/* 5. Complete Interactive Menu (Dynamic from Superbase) */}
         <InteractiveMenu
+          items={menuItems}
           onAddToCart={handleAddToCart}
           onOpenOrder={handleOpenOrder}
         />
@@ -117,8 +155,8 @@ export default function App() {
         {/* 7. Why Visit Us (Circular Icons & Organic Shapes) */}
         <WhyVisitUs />
 
-        {/* 8. Food Gallery (Editorial Asymmetrical Grid + Lightbox) */}
-        <FoodGallery />
+        {/* 8. Food Gallery (Dynamic from Superbase + Full Lightbox) */}
+        <FoodGallery items={galleryItems} />
 
         {/* 9. Google Reviews Section (3.8 ★, 1,039 Reviews) */}
         <ReviewsSection />
@@ -127,10 +165,10 @@ export default function App() {
         <LocationContact onOpenOrder={() => setIsOrderModalOpen(true)} />
       </main>
 
-      {/* 11. Footer */}
-      <Footer />
+      {/* 11. Footer with Superbase Launcher */}
+      <Footer onOpenAdmin={() => setIsAdminPanelOpen(true)} />
 
-      {/* 12. Ordering Modal (WhatsApp & Phone) */}
+      {/* 12. Ordering Modal (WhatsApp & Phone with Supabase logging) */}
       <OrderModal
         isOpen={isOrderModalOpen}
         onClose={() => setIsOrderModalOpen(false)}
@@ -140,7 +178,16 @@ export default function App() {
         onClearCart={handleClearCart}
       />
 
-      {/* 13. Back to Top Floating Controls */}
+      {/* 13. Superbase Admin Studio / Photo & Details Manager */}
+      <AdminPanel
+        isOpen={isAdminPanelOpen}
+        onClose={() => setIsAdminPanelOpen(false)}
+        galleryItems={galleryItems}
+        menuItems={menuItems}
+        onRefreshData={loadSupabaseData}
+      />
+
+      {/* 14. Back to Top Floating Controls */}
       <BackToTop onOpenOrder={() => setIsOrderModalOpen(true)} />
 
     </div>

@@ -11,6 +11,7 @@ import {
   Info
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { logCustomerOrder } from '../services/supabaseService';
 
 export interface CartItem {
   id: string;
@@ -179,6 +180,17 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (cart.length > 0) {
+                  logCustomerOrder({
+                    id: `ord-${Date.now()}`,
+                    customerName: 'Website Visitor',
+                    phone: 'WhatsApp Order',
+                    items: cart,
+                    totalAmount,
+                  });
+                }
+              }}
               className="w-full py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-lg transition-transform transform hover:-translate-y-0.5"
             >
               <MessageCircle className="w-5 h-5" />

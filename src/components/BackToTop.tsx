@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, MessageCircle } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { MessageCircle } from 'lucide-react';
 
 interface BackToTopProps {
   onOpenOrder: () => void;
@@ -8,41 +7,46 @@ interface BackToTopProps {
 
 export const BackToTop: React.FC<BackToTopProps> = ({ onOpenOrder }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 400);
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // Show after scrolling 300px
+      setIsVisible(scrollY > 300);
+
+      // Detect if user has reached the bottom footer area (within 350px of bottom)
+      // When near footer, lift higher so it NEVER blocks the footer or admin portal
+      const nearBottom = scrollY + windowHeight >= documentHeight - 350;
+      setIsNearFooter(nearBottom);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-center gap-3">
-      {/* Floating WhatsApp Quick Action Button */}
+    // Moved upwards (bottom-28 by default, bottom-36 when near bottom footer)
+    <div
+      className={`fixed right-5 sm:right-6 z-40 transition-all duration-300 pointer-events-auto ${
+        isNearFooter ? 'bottom-36' : 'bottom-24 sm:bottom-28'
+      }`}
+    >
+      {/* Floating Order Online Button (Arrow button removed as requested) */}
       <button
         onClick={onOpenOrder}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366] text-white font-semibold text-xs shadow-xl hover:bg-[#20ba5a] transition-all transform hover:scale-105"
+        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366] text-white font-bold text-xs sm:text-sm shadow-2xl hover:bg-[#20ba5a] transition-all transform hover:scale-105 border border-white/20 cursor-pointer"
         title="Order via WhatsApp"
         aria-label="Order on WhatsApp"
       >
-        <MessageCircle className="w-4 h-4" />
-        <span className="hidden sm:inline">Order Online</span>
-      </button>
-
-      {/* Floating Back to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className="w-11 h-11 rounded-full bg-[#541E29] text-[#F5E9D5] hover:bg-[#D99035] hover:text-[#34251F] shadow-xl flex items-center justify-center transition-all transform hover:scale-110 border border-[#E7D5BB]"
-        aria-label="Scroll back to top"
-      >
-        <ArrowUp className="w-5 h-5" />
+        <MessageCircle className="w-4 h-4 text-white fill-white" />
+        <span>Order Online</span>
       </button>
     </div>
   );

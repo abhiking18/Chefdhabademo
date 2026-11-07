@@ -7,13 +7,25 @@ import {
   Instagram,
   Facebook,
   Share2,
-  Heart
+  Heart,
+  Lock
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
-export const Footer: React.FC = () => {
-  const scrollToTop = () => {
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
+  const scrollToTop = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    const heroEl = document.getElementById('hero');
+    if (heroEl) {
+      heroEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   };
 
   const navLinks = [
@@ -189,13 +201,27 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Copyright & Rights */}
+        {/* Bottom Copyright, Rights & Discreet Admin Portal Login */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E7D5BB]/70">
           <p>© {new Date().getFullYear()} New Highway Chef Dhaba. All rights reserved.</p>
-          <p className="flex items-center gap-1.5">
-            <span>Client demo developed with pride by</span>
-            <strong className="text-[#D99035] font-bold">TAREX</strong>
-          </p>
+          
+          <div className="flex items-center gap-4">
+            <p className="flex items-center gap-1.5">
+              <span>Client demo developed with pride by</span>
+              <strong className="text-[#D99035] font-bold">TAREX</strong>
+            </p>
+
+            {onOpenAdmin && (
+              <button
+                onClick={onOpenAdmin}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#3E161E] hover:bg-[#D99035] text-[#F5E9D5] hover:text-[#34251F] text-xs font-semibold border border-[#D99035]/40 transition-all cursor-pointer shadow-sm ml-2"
+                title="Admin Login for restaurant owner"
+              >
+                <Lock className="w-3.5 h-3.5 text-[#D99035] group-hover:text-[#34251F]" />
+                <span>Admin Portal</span>
+              </button>
+            )}
+          </div>
         </div>
 
       </div>
