@@ -1,0 +1,6 @@
+{
+  "name": "New Highway Chef Dhaba",
+  "description": "Premium restaurant website for New Highway Chef Dhaba in Rangia, Assam — authentic Indian flavours, hearty thalis, outdoor dining, and traditional dhaba hospitality.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

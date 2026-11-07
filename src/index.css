@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-maroon: #541E29;
+  --color-maroon-dark: #3E161E;
+  --color-maroon-light: #6E2837;
+  --color-ivory: #F5E9D5;
+  --color-ivory-light: #FAF4EB;
+  --color-ivory-warm: #F0E2CB;
+  --color-saffron: #D99035;
+  --color-saffron-light: #F1A348;
+  --color-saffron-dark: #B67324;
+  --color-darkbrown: #34251F;
+  --color-darkbrown-light: #4A362D;
+  --color-beige: #E7D5BB;
+  --color-beige-dark: #D4BE9F;
+}
+
+@layer utilities {
+  .arch-frame {
+    border-radius: 180px 180px 32px 32px;
+  }
+  .arch-frame-sm {
+    border-radius: 120px 120px 24px 24px;
+  }
+  .organic-frame-1 {
+    border-radius: 64px 24px 64px 24px;
+  }
+  .organic-frame-2 {
+    border-radius: 24px 80px 24px 80px;
+  }
+  .organic-frame-3 {
+    border-radius: 48px 20px 80px 20px;
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 24s linear infinite;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 5s ease-in-out infinite;
+}
