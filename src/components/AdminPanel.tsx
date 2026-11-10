@@ -35,7 +35,7 @@ import {
   insertMenuItem,
   updateMenuItemPrice
 } from '../services/supabaseService';
-import { GalleryItem, MenuItem } from '../data/restaurantData';
+import { GalleryItem, MenuItem, RESTAURANT_INFO } from '../data/restaurantData';
 
 interface AdminPanelProps {
   isOpen: boolean;
@@ -74,7 +74,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [fileBase64, setFileBase64] = useState<string | null>(null);
   const [photoTitle, setPhotoTitle] = useState('');
-  const [photoCategory, setPhotoCategory] = useState<GalleryItem['category']>('Restaurant Ambience');
+  const [photoCategory, setPhotoCategory] = useState<GalleryItem['category']>('Cabins & Machan');
   const [photoCaption, setPhotoCaption] = useState('');
   const [photoAspect, setPhotoAspect] = useState<GalleryItem['aspect']>('wide');
   const [photoIsReal, setPhotoIsReal] = useState(true);
@@ -289,27 +289,32 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl bg-[#FAF4EB] rounded-[36px_16px_36px_16px] overflow-hidden border-2 border-[#D99035] shadow-2xl flex flex-col max-h-[92vh]"
+        className="relative w-full max-w-4xl bg-[#FAF6F0] rounded-2xl overflow-hidden border border-[#C9822C] shadow-2xl flex flex-col max-h-[92vh]"
       >
         
         {/* Header */}
-        <div className="p-5 sm:p-6 bg-[#541E29] text-[#F5E9D5] flex items-center justify-between border-b border-[#D99035]/30">
+        <div className="p-4 sm:p-5 bg-[#4F1824] text-[#FAF6F0] flex items-center justify-between border-b border-[#C9822C]/30">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#D99035] text-[#34251F] flex items-center justify-center font-bold shadow">
-              <Database className="w-5 h-5" />
+            <div className="relative">
+              <img
+                src={RESTAURANT_INFO.owner.image}
+                alt="Owner"
+                className="w-10 h-10 rounded-full object-cover border-2 border-[#C9822C] shadow"
+              />
+              <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#2D6A4F] border-2 border-[#4F1824]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-serif text-xl sm:text-2xl font-bold">Owner & Admin Portal</h3>
+                <h3 className="font-serif text-base sm:text-lg font-bold">Owner & Management Studio</h3>
                 {isAuthenticated && (
-                  <span className="text-[11px] bg-[#2E7D32] text-white font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3" />
-                    <span>Logged In</span>
+                  <span className="text-[10px] bg-[#2D6A4F] text-white font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <CheckCircle2 className="w-2.5 h-2.5" />
+                    <span>Verified</span>
                   </span>
                 )}
               </div>
-              <p className="text-xs text-[#E7D5BB]">
-                Superbase Backend: <code className="font-mono text-[#D99035]">{SUPABASE_PROJECT_ID}</code>
+              <p className="text-xs text-[#E5D9C8]">
+                Superbase Backend: <code className="font-mono text-[#C9822C]">{SUPABASE_PROJECT_ID}</code> · NH-31 Rangia
               </p>
             </div>
           </div>
@@ -573,11 +578,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                         onChange={(e) => setPhotoCategory(e.target.value as any)}
                         className="w-full px-4 py-2.5 rounded-xl bg-[#FAF4EB] text-[#34251F] border border-[#E7D5BB] focus:ring-2 focus:ring-[#541E29] text-sm outline-none"
                       >
-                        <option value="Restaurant Ambience">Restaurant Ambience</option>
-                        <option value="Outdoor Dining">Outdoor Dining</option>
-                        <option value="Interior & Cabins">Interior & Cabins</option>
-                        <option value="Signature Foods">Signature Foods</option>
-                        <option value="Kitchen Craft">Kitchen Craft</option>
+                        <option value="Cabins & Machan">Cabins & Machan (Huts / Machan)</option>
+                        <option value="Kids Playground">Kids Playground & Swings</option>
+                        <option value="Dining Halls">Dining Halls & Interior</option>
+                        <option value="Restaurant Exterior">Restaurant Exterior & Entrance</option>
+                        <option value="Founder & Leadership">Founder & Leadership</option>
                       </select>
                     </div>
                   </div>

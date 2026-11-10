@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { OurStory } from './components/OurStory';
+import { OwnerWelcome } from './components/OwnerWelcome';
 import { SignatureFood } from './components/SignatureFood';
 import { InteractiveMenu } from './components/InteractiveMenu';
 import { FoodExperience } from './components/FoodExperience';
@@ -118,7 +119,7 @@ export default function App() {
   const cartTotalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#F5E9D5] text-[#34251F] font-sans selection:bg-[#D99035]/30 selection:text-[#541E29] flex flex-col relative">
+    <div className="min-h-screen bg-[#FAF6F0] text-[#241814] font-sans selection:bg-[#C9822C]/25 selection:text-[#4F1824] flex flex-col relative">
       
       {/* 1. Sticky Navigation Bar (Clean Customer Experience) */}
       <Navbar
@@ -136,7 +137,10 @@ export default function App() {
         {/* 3. Our Story Section */}
         <OurStory />
 
-        {/* 4. Signature Food Showcase */}
+        {/* 4. Owner & Founder Personal Welcome */}
+        <OwnerWelcome onOpenOrder={() => setIsOrderModalOpen(true)} />
+
+        {/* 5. Signature Food Showcase */}
         <SignatureFood
           onAddToCart={handleAddToCart}
           onOpenOrder={handleOpenOrder}
@@ -158,7 +162,7 @@ export default function App() {
         {/* 8. Food Gallery (Dynamic from Superbase + Full Lightbox) */}
         <FoodGallery items={galleryItems} />
 
-        {/* 9. Google Reviews Section (3.8 ★, 1,039 Reviews) */}
+        {/* 9. Google Reviews Section (3.8 Rating, 1,039 Reviews) */}
         <ReviewsSection />
 
         {/* 10. Location and Contact (Curved Map, Timings, Cash only) */}

@@ -5,11 +5,7 @@ import {
   Clock,
   Wallet,
   Navigation,
-  MessageCircle,
-  Sparkles,
-  Users,
-  UtensilsCrossed,
-  CheckCircle2
+  MessageCircle
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
@@ -17,7 +13,7 @@ interface LocationContactProps {
   onOpenOrder: () => void;
 }
 
-export const LocationContact: React.FC<LocationContactProps> = ({ onOpenOrder }) => {
+export const LocationContact: React.FC<LocationContactProps> = () => {
   const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
     'New Highway Chef Dhaba, Rangia, Assam 781354'
   )}`;
@@ -27,42 +23,30 @@ export const LocationContact: React.FC<LocationContactProps> = ({ onOpenOrder })
   )}`;
 
   return (
-    <section id="location" className="relative py-24 sm:py-32 bg-[#FAF4EB] overflow-hidden">
-      
-      {/* Decorative Organic Backdrop Circles */}
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 left-0 w-80 h-80 rounded-full bg-[#E7D5BB]/50 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-[#D99035]/15 blur-3xl pointer-events-none"
-      />
-
+    <section id="location" className="relative py-14 sm:py-18 bg-[#FAF6F0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-widest uppercase text-[#541E29] mb-3">
-            <MapPin className="w-4 h-4 text-[#D99035]" />
-            <span>FIND US ON THE HIGHWAY</span>
-            <MapPin className="w-4 h-4 text-[#D99035]" />
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#8C4A38] mb-2">
+            <span className="w-5 h-[2px] bg-[#C9822C]" />
+            <span>FIND US ON NH-31</span>
+            <span className="w-5 h-[2px] bg-[#C9822C]" />
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#541E29] mb-4 [text-wrap:balance]">
-            Come Hungry. <br />
-            <span className="italic font-normal text-[#34251F]">Leave Happy.</span>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#4F1824] mb-2 [text-wrap:balance]">
+            Location & Hours
           </h2>
 
-          <p className="text-base sm:text-lg text-[#4A362D]">
-            Look for our illuminated red signboard right along the highway in Rangia, Assam — spacious parking for cars, bikes & buses.
+          <p className="text-sm sm:text-base text-[#44332B]">
+            Convenient highway parking for cars, bikes & buses right on NH-31 in Rangia, Assam.
           </p>
         </div>
 
         {/* Real Entrance Signboard Card Preview */}
-        <div className="mb-12 relative rounded-[32px_16px_32px_16px] overflow-hidden border-4 border-[#E7D5BB] shadow-xl bg-[#34251F]">
+        <div className="mb-10 relative rounded-2xl overflow-hidden border border-[#E5D9C8] shadow-md bg-[#241814]">
           <div className="grid grid-cols-1 md:grid-cols-12 items-center">
-            <div className="md:col-span-7 relative aspect-[16/9] md:aspect-auto md:h-80 overflow-hidden">
+            <div className="md:col-span-7 relative aspect-[16/9] md:aspect-auto md:h-72 overflow-hidden">
               <img
                 src="/assets/aistudio/unnamed_98627df7.jpg"
                 alt="New Highway Chef Dhaba illuminated signboard and entrance at night"
@@ -70,158 +54,133 @@ export const LocationContact: React.FC<LocationContactProps> = ({ onOpenOrder })
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-transparent to-transparent" />
-              <div className="absolute top-4 left-4 bg-[#D99035] text-[#34251F] font-bold text-xs px-3 py-1 rounded-full shadow flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#34251F]" />
-                <span>Verified Entrance View</span>
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/75 via-transparent to-transparent" />
+              <div className="absolute top-3 left-3 bg-[#C9822C] text-[#241814] font-bold text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow">
+                Entrance View
               </div>
             </div>
 
-            <div className="md:col-span-5 p-6 sm:p-8 bg-[#541E29] text-[#F5E9D5] flex flex-col justify-center h-full">
-              <span className="text-xs uppercase tracking-widest font-bold text-[#D99035] mb-1">
-                Official Highway Landmark
+            <div className="md:col-span-5 p-6 bg-[#4F1824] text-[#FAF6F0] flex flex-col justify-center h-full">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-[#C9822C] mb-1">
+                Highway Landmark
               </span>
-              <h3 className="font-serif text-2xl font-bold text-[#F5E9D5] mb-2">
-                A Complete Family Restaurant
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#FAF6F0] mb-2">
+                A Complete Family Dhaba
               </h3>
-              <p className="text-xs sm:text-sm text-[#E7D5BB] leading-relaxed mb-4">
-                Easily spot our glowing red signage from the road. Enjoy ample parking, fast service, comfortable outdoor and indoor seating, and fresh tandoori food prepared hot on arrival.
+              <p className="text-xs text-[#E5D9C8] leading-relaxed mb-4">
+                Spot our glowing signage right along the road. Features ample parking, live tandoor, and quick service.
               </p>
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full bg-[#3E161E] border border-[#D99035]/30 text-xs text-[#D99035] font-semibold">
-                  VEG & NON-VEG
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#381119] border border-[#C9822C]/30 text-[10px] text-[#C9822C] font-semibold">
+                  Veg & Non-Veg
                 </span>
-                <span className="text-xs text-[#E7D5BB]">Closes 11:30 PM</span>
+                <span className="text-xs text-[#E5D9C8]">Open till 11:30 PM</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* 2-Column Split: Info Card & Curved Embedded Map */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
-          {/* Left Column: Contact & Essential Restaurant Facts (5 cols) */}
-          <div className="lg:col-span-5 bg-[#F5E9D5] rounded-[48px_20px_48px_20px] p-8 sm:p-10 border-2 border-[#E7D5BB] shadow-xl flex flex-col justify-between">
-            
+          {/* Left Column: Contact & Essential Facts */}
+          <div className="lg:col-span-5 bg-[#F3ECE1] rounded-2xl p-6 sm:p-7 border border-[#E5D9C8] shadow-sm flex flex-col justify-between">
             <div>
-              <div className="mb-6 pb-6 border-b border-[#E7D5BB]">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#8C4A38]">
-                  Restaurant Address
+              <div className="mb-4 pb-4 border-b border-[#E5D9C8]">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8C4A38]">
+                  Address
                 </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#541E29] mt-1">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#4F1824] mt-0.5">
                   {RESTAURANT_INFO.name}
                 </h3>
-                <div className="flex items-start gap-2.5 mt-3 text-sm text-[#4A362D]">
-                  <MapPin className="w-5 h-5 text-[#D99035] shrink-0 mt-0.5" />
+                <div className="flex items-start gap-2 mt-2 text-xs sm:text-sm text-[#44332B]">
+                  <MapPin className="w-4 h-4 text-[#C9822C] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-medium">{RESTAURANT_INFO.location}</p>
-                    <p className="text-xs text-[#8C4A38] mt-0.5">Kamrup district, Assam, India</p>
+                    <p className="text-[11px] text-[#8C4A38] mt-0.5">Assam, India</p>
                   </div>
                 </div>
               </div>
 
-              {/* Essential Verified Details Grid */}
-              <div className="space-y-4 mb-8">
+              {/* Essential Details */}
+              <div className="space-y-3 mb-6">
                 
                 {/* Phone */}
-                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-[#FAF4EB] border border-[#E7D5BB]">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-[#541E29] text-[#D99035] flex items-center justify-center">
-                      <Phone className="w-4 h-4" />
+                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAF6F0] border border-[#E5D9C8]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-full bg-[#4F1824] text-[#C9822C] flex items-center justify-center">
+                      <Phone className="w-3.5 h-3.5" />
                     </div>
                     <div>
-                      <p className="text-[11px] text-[#8C4A38] uppercase font-bold">Call Us</p>
-                      <p className="text-sm font-bold text-[#34251F]">{RESTAURANT_INFO.phone}</p>
+                      <p className="text-[10px] text-[#8C4A38] uppercase font-bold">Call Us</p>
+                      <p className="text-xs sm:text-sm font-bold text-[#241814]">{RESTAURANT_INFO.phone}</p>
                     </div>
                   </div>
                   <a
                     href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-                    className="px-3.5 py-1.5 rounded-full bg-[#541E29] text-[#F5E9D5] text-xs font-semibold hover:bg-[#3E161E] transition-colors"
+                    className="px-3 py-1 rounded-full bg-[#4F1824] text-[#FAF6F0] text-xs font-semibold hover:bg-[#381119] transition-colors"
                   >
                     Call
                   </a>
                 </div>
 
-                {/* Opening Hours */}
-                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#FAF4EB] border border-[#E7D5BB]">
-                  <div className="w-9 h-9 rounded-full bg-[#541E29] text-[#D99035] flex items-center justify-center shrink-0">
-                    <Clock className="w-4 h-4" />
+                {/* Hours */}
+                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FAF6F0] border border-[#E5D9C8]">
+                  <div className="w-8 h-8 rounded-full bg-[#4F1824] text-[#C9822C] flex items-center justify-center shrink-0">
+                    <Clock className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <p className="text-[11px] text-[#8C4A38] uppercase font-bold">Timings</p>
-                    <p className="text-sm font-bold text-[#34251F]">{RESTAURANT_INFO.closingTime}</p>
-                    <p className="text-[11px] text-[#8C4A38] mt-0.5">
-                      {RESTAURANT_INFO.hoursDisclaimer}
-                    </p>
+                    <p className="text-[10px] text-[#8C4A38] uppercase font-bold">Timings</p>
+                    <p className="text-xs sm:text-sm font-bold text-[#241814]">{RESTAURANT_INFO.closingTime}</p>
+                    <p className="text-[11px] text-[#8C4A38] mt-0.5">Open daily for breakfast, lunch & dinner</p>
                   </div>
                 </div>
 
-                {/* Reported Price Range */}
-                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#FAF4EB] border border-[#E7D5BB]">
-                  <div className="w-9 h-9 rounded-full bg-[#541E29] text-[#D99035] flex items-center justify-center shrink-0">
-                    <Wallet className="w-4 h-4" />
+                {/* Price Range */}
+                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FAF6F0] border border-[#E5D9C8]">
+                  <div className="w-8 h-8 rounded-full bg-[#4F1824] text-[#C9822C] flex items-center justify-center shrink-0">
+                    <Wallet className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <p className="text-[11px] text-[#8C4A38] uppercase font-bold">Price Range & Payment</p>
-                    <p className="text-sm font-bold text-[#34251F]">{RESTAURANT_INFO.priceRange}</p>
-                    <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#541E29] text-[#F5E9D5] font-semibold">
-                        Cash Only
-                      </span>
-                      <span className="text-xs text-[#8C4A38]">Counter checkout</span>
-                    </div>
+                    <p className="text-[10px] text-[#8C4A38] uppercase font-bold">Billing</p>
+                    <p className="text-xs sm:text-sm font-bold text-[#241814]">{RESTAURANT_INFO.priceRange}</p>
+                    <span className="inline-block mt-1 text-[11px] px-2 py-0.5 rounded-full bg-[#4F1824] text-[#FAF6F0] font-semibold">
+                      Cash Only
+                    </span>
                   </div>
-                </div>
-
-                {/* Key Amenities */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  <span className="px-3 py-1 rounded-full bg-[#FAF4EB] border border-[#E7D5BB] text-xs font-semibold text-[#541E29] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D99035]" />
-                    Outdoor Seating
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-[#FAF4EB] border border-[#E7D5BB] text-xs font-semibold text-[#541E29] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D99035]" />
-                    Kids' Menu
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-[#FAF4EB] border border-[#E7D5BB] text-xs font-semibold text-[#541E29] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D99035]" />
-                    Clay Tandoor
-                  </span>
                 </div>
 
               </div>
             </div>
 
-            {/* Quick Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-[#E7D5BB]">
+            {/* Action Buttons */}
+            <div className="flex gap-2.5 pt-4 border-t border-[#E5D9C8]">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white font-semibold text-sm shadow hover:bg-[#20ba5a] transition-all"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-[#25D366] text-white font-semibold text-xs sm:text-sm shadow hover:bg-[#20ba5a] transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Us</span>
+                <span>WhatsApp</span>
               </a>
 
               <a
                 href={googleMapsDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#541E29] text-[#F5E9D5] font-semibold text-sm shadow hover:bg-[#3E161E] transition-all"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-[#4F1824] text-[#FAF6F0] font-semibold text-xs sm:text-sm shadow hover:bg-[#381119] transition-all"
               >
-                <Navigation className="w-4 h-4 text-[#D99035]" />
-                <span>Get Directions</span>
+                <Navigation className="w-4 h-4 text-[#C9822C]" />
+                <span>Directions</span>
               </a>
             </div>
 
           </div>
 
-          {/* Right Column: Curved Interactive Map Container (7 cols) */}
+          {/* Right Column: Embedded Map */}
           <div className="lg:col-span-7 flex flex-col">
-            <div className="relative w-full h-[450px] lg:h-full min-h-[420px] rounded-[24px_60px_24px_60px] overflow-hidden border-4 border-[#E7D5BB] shadow-2xl bg-[#34251F]">
-              
-              {/* Embedded Google Maps iframe targeted directly to Rangia, Assam */}
+            <div className="relative w-full h-[360px] lg:h-full min-h-[360px] rounded-2xl overflow-hidden border border-[#E5D9C8] shadow-sm bg-[#241814]">
               <iframe
                 title="New Highway Chef Dhaba Rangia Map Location"
                 src="https://maps.google.com/maps?q=New%20Highway%20Chef%20Dhaba%20Rangia%20Assam&t=&z=14&ie=UTF8&iwloc=&output=embed"
@@ -232,32 +191,12 @@ export const LocationContact: React.FC<LocationContactProps> = ({ onOpenOrder })
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
               />
-
-              {/* Floating Map Label Card */}
-              <div className="absolute top-4 left-4 z-10 bg-[#FAF4EB]/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#E7D5BB] max-w-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-3 h-3 rounded-full bg-[#D99035] animate-ping" />
-                  <span className="font-serif font-bold text-sm text-[#541E29]">New Highway Chef Dhaba</span>
-                </div>
-                <p className="text-xs text-[#4A362D]">Rangia, Assam 781354</p>
-                <a
-                  href={googleMapsDirectionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 text-xs font-semibold text-[#541E29] hover:text-[#D99035] inline-flex items-center gap-1"
-                >
-                  <span>Open in Google Maps</span>
-                  <Navigation className="w-3 h-3 text-[#D99035]" />
-                </a>
-              </div>
-
             </div>
           </div>
 
         </div>
 
       </div>
-
     </section>
   );
 };

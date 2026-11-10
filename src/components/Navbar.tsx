@@ -13,7 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,63 +42,62 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#F5E9D5]/95 backdrop-blur-md shadow-md py-3 border-b border-[#E7D5BB]'
-            : 'bg-transparent py-5'
+            ? 'bg-[#FAF6F0]/95 backdrop-blur-md shadow-sm py-2.5 border-b border-[#E5D9C8]'
+            : 'bg-transparent py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-8">
-            {/* Brand Title (Zone 1 - Strict Top Bar Contract) */}
+          <div className="flex items-center justify-between gap-6">
+            {/* Brand Title */}
             <a
               href="#hero"
-              className="group flex items-center gap-2.5 text-left whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#541E29] rounded"
+              className="group flex items-center gap-2.5 text-left whitespace-nowrap shrink-0"
             >
-              <div className="w-9 h-9 rounded-full bg-[#541E29] text-[#F5E9D5] flex items-center justify-center font-serif text-lg font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
+              <div className="w-8 h-8 rounded-full bg-[#4F1824] text-[#FAF6F0] flex items-center justify-center font-serif text-base font-bold shadow-xs">
                 N
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-[#541E29] group-hover:text-[#D99035] transition-colors leading-none">
+                <span className="font-serif text-base sm:text-lg font-bold tracking-tight text-[#4F1824] group-hover:text-[#C9822C] transition-colors leading-none">
                   NEW HIGHWAY CHEF DHABA
                 </span>
-                <span className="text-[10px] tracking-widest uppercase font-semibold text-[#8C4A38] mt-0.5">
+                <span className="text-[9px] tracking-widest uppercase font-semibold text-[#8C4A38] mt-0.5">
                   Rangia · Assam
                 </span>
               </div>
             </a>
 
-            {/* Desktop Navigation Links (Zone 2) */}
-            <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-[#34251F]">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-[#241814]">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="relative py-1 whitespace-nowrap shrink-0 hover:text-[#541E29] font-medium transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#D99035] hover:after:w-full after:transition-all after:duration-300"
+                  className="py-1 hover:text-[#4F1824] font-medium transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
 
-            {/* Primary Action Button (Zone 3) */}
+            {/* Action Buttons */}
             <div className="hidden sm:flex items-center gap-3 shrink-0">
               <a
                 href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-                className="hidden xl:flex items-center gap-1.5 text-xs font-semibold text-[#541E29] hover:text-[#D99035] transition-colors px-3 py-2 rounded-full border border-[#541E29]/20 hover:border-[#D99035]"
-                title="Call Restaurant Directly"
+                className="hidden xl:flex items-center gap-1.5 text-xs font-semibold text-[#4F1824] hover:text-[#C9822C] transition-colors px-3 py-1.5 rounded-full border border-[#4F1824]/20"
               >
-                <Phone className="w-3.5 h-3.5 text-[#D99035]" />
+                <Phone className="w-3.5 h-3.5 text-[#C9822C]" />
                 <span>{RESTAURANT_INFO.phone}</span>
               </a>
 
               <button
                 onClick={() => onOpenOrder()}
-                className="relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-[#F5E9D5] bg-[#541E29] hover:bg-[#3E161E] rounded-full shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap shrink-0 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold text-[#FAF6F0] bg-[#4F1824] hover:bg-[#381119] rounded-full shadow-sm transition-all cursor-pointer"
               >
-                <UtensilsCrossed className="w-4 h-4 text-[#D99035]" />
+                <UtensilsCrossed className="w-3.5 h-3.5 text-[#C9822C]" />
                 <span>Order Now</span>
                 {cartCount > 0 && (
-                  <span className="w-5 h-5 rounded-full bg-[#D99035] text-[#34251F] text-xs font-bold flex items-center justify-center">
+                  <span className="w-4 h-4 rounded-full bg-[#C9822C] text-[#241814] text-[10px] font-bold flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
@@ -109,12 +108,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
             <div className="flex items-center gap-2 lg:hidden">
               <button
                 onClick={() => onOpenOrder()}
-                className="p-2 rounded-full bg-[#541E29] text-[#F5E9D5] shadow-sm relative sm:hidden"
+                className="p-1.5 rounded-full bg-[#4F1824] text-[#FAF6F0] relative sm:hidden"
                 aria-label="Order food"
               >
-                <UtensilsCrossed className="w-4 h-4 text-[#D99035]" />
+                <UtensilsCrossed className="w-3.5 h-3.5 text-[#C9822C]" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D99035] text-[#34251F] text-[10px] font-bold flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#C9822C] text-[#241814] text-[9px] font-bold flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
@@ -122,11 +121,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl text-[#541E29] hover:bg-[#E7D5BB]/50 transition-colors focus:outline-none focus:ring-2 focus:ring-[#541E29]"
-                aria-label="Toggle navigation menu"
-                aria-expanded={mobileMenuOpen}
+                className="p-1.5 rounded-lg text-[#4F1824] hover:bg-[#F3ECE1] transition-colors"
+                aria-label="Toggle menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
@@ -134,36 +132,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#F5E9D5] border-b border-[#E7D5BB] shadow-xl px-5 py-6 animate-in slide-in-from-top-2 duration-200">
-            <nav className="flex flex-col gap-3">
+          <div className="lg:hidden bg-[#FAF6F0] border-b border-[#E5D9C8] shadow-lg px-5 py-5 animate-in slide-in-from-top-2 duration-200">
+            <nav className="flex flex-col gap-2.5">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="flex items-center justify-between text-base font-medium text-[#34251F] hover:text-[#541E29] py-2 border-b border-[#E7D5BB]/50"
+                  className="flex items-center justify-between text-sm font-medium text-[#241814] hover:text-[#4F1824] py-1.5 border-b border-[#E5D9C8]/40"
                 >
                   <span>{link.label}</span>
-                  <ChevronRight className="w-4 h-4 text-[#D99035]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#C9822C]" />
                 </a>
               ))}
-              <div className="pt-4 flex flex-col gap-2.5">
+              <div className="pt-3 flex flex-col gap-2">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenOrder();
                   }}
-                  className="w-full py-3 px-4 rounded-full bg-[#541E29] text-[#F5E9D5] font-semibold flex items-center justify-center gap-2 shadow hover:bg-[#3E161E] transition-colors"
+                  className="w-full py-2.5 px-4 rounded-full bg-[#4F1824] text-[#FAF6F0] text-xs font-semibold flex items-center justify-center gap-2 shadow"
                 >
-                  <UtensilsCrossed className="w-4 h-4 text-[#D99035]" />
-                  <span>Order Now {cartCount > 0 ? `(${cartCount} items)` : ''}</span>
+                  <UtensilsCrossed className="w-3.5 h-3.5 text-[#C9822C]" />
+                  <span>Order Now {cartCount > 0 ? `(${cartCount})` : ''}</span>
                 </button>
 
                 <a
                   href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-                  className="w-full py-2.5 px-4 rounded-full border border-[#541E29] text-[#541E29] font-medium text-center text-sm flex items-center justify-center gap-2"
+                  className="w-full py-2 px-4 rounded-full border border-[#4F1824]/30 text-[#4F1824] font-medium text-center text-xs flex items-center justify-center gap-1.5"
                 >
-                  <Phone className="w-4 h-4 text-[#D99035]" />
+                  <Phone className="w-3.5 h-3.5 text-[#C9822C]" />
                   <span>Call {RESTAURANT_INFO.phone}</span>
                 </a>
               </div>

@@ -59,24 +59,24 @@ export const OrderModal: React.FC<OrderModalProps> = ({
       
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-lg bg-[#FAF4EB] rounded-[36px_16px_36px_16px] overflow-hidden border-2 border-[#D99035]/40 shadow-2xl flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-lg bg-[#FAF6F0] rounded-2xl overflow-hidden border border-[#C9822C]/40 shadow-2xl flex flex-col max-h-[90vh]"
       >
         
         {/* Modal Header */}
-        <div className="p-6 bg-[#541E29] text-[#F5E9D5] flex items-center justify-between">
+        <div className="p-5 bg-[#4F1824] text-[#FAF6F0] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#D99035] text-[#34251F] flex items-center justify-center font-bold shadow">
-              <UtensilsCrossed className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-full bg-[#C9822C] text-[#241814] flex items-center justify-center font-bold shadow-xs">
+              <UtensilsCrossed className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-serif text-xl font-bold">Order From Dhaba</h3>
-              <p className="text-xs text-[#E7D5BB]">Direct WhatsApp & Phone Orders</p>
+              <h3 className="font-serif text-lg font-bold">Order From Dhaba</h3>
+              <p className="text-xs text-[#E5D9C8]">Direct WhatsApp & Phone Orders</p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-white/10 text-[#F5E9D5] transition-colors"
+            className="p-1.5 rounded-full hover:bg-white/10 text-[#FAF6F0] transition-colors"
             aria-label="Close order dialog"
           >
             <X className="w-5 h-5" />

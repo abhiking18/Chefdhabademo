@@ -1,24 +1,22 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ChevronLeft, ChevronRight, X, Maximize2, Camera, CheckCircle2, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
 import { GALLERY_ITEMS, GalleryItem } from '../data/restaurantData';
 
 interface FoodGalleryProps {
   items?: GalleryItem[];
-  onOpenAdmin?: () => void;
 }
 
-export const FoodGallery: React.FC<FoodGalleryProps> = ({ items, onOpenAdmin }) => {
+export const FoodGallery: React.FC<FoodGalleryProps> = ({ items }) => {
   const currentList = items && items.length > 0 ? items : GALLERY_ITEMS;
   const [activeFilter, setActiveFilter] = useState<string>('All Photos');
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
   const filterTabs = [
     'All Photos',
-    'Restaurant Ambience',
-    'Outdoor Dining',
-    'Interior & Cabins',
-    'Signature Foods',
-    'Kitchen Craft'
+    'Cabins & Machan',
+    'Kids Playground',
+    'Dining Halls',
+    'Restaurant Exterior'
   ];
 
   const visibleItems = useMemo(() => {
@@ -48,44 +46,28 @@ export const FoodGallery: React.FC<FoodGalleryProps> = ({ items, onOpenAdmin }) 
   const activeItem = selectedIdx !== null ? visibleItems[selectedIdx] : null;
 
   return (
-    <section id="gallery" className="relative py-24 sm:py-32 bg-[#FAF4EB] overflow-hidden">
-      
-      {/* Decorative Background Discs */}
-      <div
-        aria-hidden="true"
-        className="absolute top-20 left-10 w-80 h-80 rounded-full bg-[#E7D5BB]/50 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#D99035]/10 blur-3xl pointer-events-none"
-      />
-
+    <section id="gallery" className="relative py-14 sm:py-18 bg-[#FAF6F0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-widest uppercase text-[#541E29] mb-3">
-            <Camera className="w-4 h-4 text-[#D99035]" />
-            <span>REAL RESTAURANT PHOTOGRAPHY & CULINARY CRAFT</span>
-            <Camera className="w-4 h-4 text-[#D99035]" />
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#8C4A38] mb-2">
+            <span className="w-5 h-[2px] bg-[#C9822C]" />
+            <span>REAL PHOTOGRAPHY</span>
+            <span className="w-5 h-[2px] bg-[#C9822C]" />
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#541E29] mb-4 [text-wrap:balance]">
-            Experience New Highway Chef Dhaba
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#4F1824] mb-2 [text-wrap:balance]">
+            Experience Our Dhaba
           </h2>
 
-          <p className="text-base sm:text-lg text-[#4A362D]">
-            Explore our authentic highway premises in Rangia — traditional thatched cabins, two-story bamboo machan, welcoming indoor hall, and delicious food.
+          <p className="text-sm sm:text-base text-[#44332B]">
+            Thatched cabins, two-story bamboo machan, kids' playground swings, and dining halls.
           </p>
-
-          <div className="mt-3 inline-flex items-center gap-2 text-xs text-[#2E7D32] bg-[#E8F5E9] px-4 py-1.5 rounded-full border border-[#C8E6C9] font-medium">
-            <CheckCircle2 className="w-4 h-4 text-[#2E7D32]" />
-            <span>Authentic photographs of the restaurant premises & culinary creations</span>
-          </div>
         </div>
 
         {/* Gallery Filter Tabs */}
-        <div className="flex items-center justify-center gap-2 flex-wrap mb-12">
+        <div className="flex items-center justify-center gap-2 flex-wrap mb-8">
           {filterTabs.map((tab) => (
             <button
               key={tab}
@@ -93,10 +75,10 @@ export const FoodGallery: React.FC<FoodGalleryProps> = ({ items, onOpenAdmin }) 
                 setActiveFilter(tab);
                 setSelectedIdx(null);
               }}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                 activeFilter === tab
-                  ? 'bg-[#541E29] text-[#F5E9D5] shadow-md transform -translate-y-0.5'
-                  : 'bg-[#F5E9D5] text-[#4A362D] hover:bg-[#E7D5BB] hover:text-[#541E29] border border-[#E7D5BB]'
+                  ? 'bg-[#4F1824] text-[#FAF6F0] shadow-sm'
+                  : 'bg-[#F3ECE1] text-[#44332B] hover:bg-[#E5D9C8] hover:text-[#4F1824] border border-[#E5D9C8]'
               }`}
             >
               {tab}
@@ -104,79 +86,46 @@ export const FoodGallery: React.FC<FoodGalleryProps> = ({ items, onOpenAdmin }) 
           ))}
         </div>
 
-        {/* Dynamic Curved Asymmetrical Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
-          {visibleItems.map((item, idx) => {
-            // Apply unique organic corner curvatures across cards
-            const cornerStyles = [
-              'rounded-[40px_16px_40px_16px]',
-              'rounded-t-[180px] rounded-b-[24px]',
-              'rounded-[16px_40px_16px_40px]',
-              'rounded-[24px_50px_24px_24px]',
-              'rounded-[40px_20px_40px_20px]',
-              'rounded-[20px_40px_20px_40px]'
-            ];
-            const currentCorner = cornerStyles[idx % cornerStyles.length];
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
+          {visibleItems.map((item, idx) => (
+            <div
+              key={item.id}
+              onClick={() => setSelectedIdx(idx)}
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-[#FFFFFF] bg-[#241814] shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-black/30">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
 
-            return (
-              <div
-                key={item.id}
-                onClick={() => setSelectedIdx(idx)}
-                className={`group relative cursor-pointer overflow-hidden ${currentCorner} border-4 border-[#F5E9D5] bg-[#34251F] shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between`}
-              >
-                {/* Photo Container */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-black/30">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity" />
 
-                  {/* Gradient Scrim */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-
-                  {/* Top Badges */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-[#F5E9D5] bg-[#541E29]/90 backdrop-blur-md px-3 py-1 rounded-full shadow">
-                      {item.category}
-                    </span>
-
-                    {item.isRealPhoto ? (
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-[#34251F] bg-[#D99035] px-2.5 py-1 rounded-full shadow flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3 text-[#34251F]" />
-                        <span>Rangia Dhaba</span>
-                      </span>
-                    ) : (
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-[#F5E9D5] bg-[#3E161E]/90 px-2.5 py-1 rounded-full shadow">
-                        Menu Food
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Hover Magnify Button */}
-                  <div className="absolute bottom-4 right-4 p-2.5 rounded-full bg-[#D99035] text-[#34251F] shadow-lg transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
-                    <Maximize2 className="w-4 h-4" />
-                  </div>
+                <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
+                  <span className="text-[10px] font-semibold text-[#FAF6F0] bg-[#4F1824]/90 px-2.5 py-0.5 rounded-full">
+                    {item.category}
+                  </span>
                 </div>
 
-                {/* Details Footer */}
-                <div className="p-5 bg-[#FAF4EB] text-[#34251F] border-t border-[#E7D5BB]">
-                  <h3 className="font-serif text-lg font-bold text-[#541E29] group-hover:text-[#D99035] transition-colors leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-[#4A362D] mt-1.5 leading-relaxed line-clamp-2">
-                    {item.caption}
-                  </p>
-                  <div className="mt-3 pt-2.5 border-t border-[#E7D5BB]/60 flex items-center justify-between text-[11px] text-[#8C4A38]">
-                    <span>Click to view in detail</span>
-                    <span className="font-bold">Photo {idx + 1}</span>
-                  </div>
+                <div className="absolute bottom-3 right-3 p-2 rounded-full bg-[#C9822C] text-[#241814] shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5" />
                 </div>
               </div>
-            );
-          })}
+
+              <div className="p-3.5 bg-[#FAF6F0] text-[#241814] border-t border-[#E5D9C8]">
+                <h3 className="font-serif text-base font-bold text-[#4F1824] group-hover:text-[#C9822C] transition-colors leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-[#44332B] mt-0.5 leading-relaxed line-clamp-1">
+                  {item.caption}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
@@ -185,81 +134,59 @@ export const FoodGallery: React.FC<FoodGalleryProps> = ({ items, onOpenAdmin }) 
       {selectedIdx !== null && activeItem && (
         <div
           onClick={() => setSelectedIdx(null)}
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
         >
-          {/* Close Button */}
           <button
             onClick={() => setSelectedIdx(null)}
-            className="absolute top-5 right-5 z-50 p-3 rounded-full bg-[#541E29] text-[#F5E9D5] hover:bg-[#D99035] hover:text-[#34251F] transition-colors focus:outline-none focus:ring-2 focus:ring-white shadow-xl"
-            aria-label="Close lightbox"
+            className="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-[#4F1824] text-[#FAF6F0] hover:bg-[#C9822C] hover:text-[#241814] transition-colors cursor-pointer shadow-lg"
+            aria-label="Close"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
 
-          {/* Previous Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               setSelectedIdx((selectedIdx - 1 + visibleItems.length) % visibleItems.length);
             }}
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 p-3 sm:p-4 rounded-full bg-[#541E29]/80 text-[#F5E9D5] hover:bg-[#D99035] hover:text-[#34251F] transition-colors focus:outline-none shadow-xl"
-            aria-label="Previous photograph"
+            className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3 rounded-full bg-[#4F1824]/80 text-[#FAF6F0] hover:bg-[#C9822C] hover:text-[#241814] transition-colors cursor-pointer shadow-lg"
+            aria-label="Previous"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Next Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               setSelectedIdx((selectedIdx + 1) % visibleItems.length);
             }}
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-50 p-3 sm:p-4 rounded-full bg-[#541E29]/80 text-[#F5E9D5] hover:bg-[#D99035] hover:text-[#34251F] transition-colors focus:outline-none shadow-xl"
-            aria-label="Next photograph"
+            className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3 rounded-full bg-[#4F1824]/80 text-[#FAF6F0] hover:bg-[#C9822C] hover:text-[#241814] transition-colors cursor-pointer shadow-lg"
+            aria-label="Next"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Main Lightbox Content Card */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full bg-[#34251F] rounded-3xl overflow-hidden border-2 border-[#D99035]/40 shadow-2xl flex flex-col max-h-[92vh]"
+            className="relative max-w-3xl w-full bg-[#241814] rounded-2xl overflow-hidden border border-[#C9822C]/40 shadow-2xl flex flex-col max-h-[90vh]"
           >
-            {/* Image Frame */}
-            <div className="relative flex-1 overflow-hidden flex items-center justify-center bg-black/60 p-2 sm:p-4">
+            <div className="relative flex-1 overflow-hidden flex items-center justify-center bg-black/70 p-2 sm:p-4">
               <img
                 src={activeItem.image}
                 alt={activeItem.title}
-                className="max-h-[66vh] w-auto max-w-full object-contain rounded-xl shadow-lg"
+                className="max-h-[65vh] w-auto max-w-full object-contain rounded-lg"
                 referrerPolicy="no-referrer"
               />
             </div>
 
-            {/* Bottom Caption & Controls */}
-            <div className="p-6 bg-[#FAF4EB] text-[#34251F] border-t border-[#E7D5BB] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#8C4A38]">
-                    {activeItem.category} · Photo {selectedIdx + 1} of {visibleItems.length}
-                  </span>
-                  {activeItem.isRealPhoto && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#D99035] text-[#34251F]">
-                      Verified Restaurant Photo
-                    </span>
-                  )}
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-[#541E29]">
+            <div className="p-4 bg-[#FAF6F0] text-[#241814] border-t border-[#E5D9C8] flex items-center justify-between gap-3">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C4A38] block">
+                  {activeItem.category} · {selectedIdx + 1} of {visibleItems.length}
+                </span>
+                <h3 className="font-serif text-lg font-bold text-[#4F1824]">
                   {activeItem.title}
                 </h3>
-                <p className="text-sm text-[#4A362D] mt-1.5 leading-relaxed">
-                  {activeItem.caption}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2 shrink-0 self-start sm:self-center">
-                <span className="text-xs text-[#8C4A38] bg-[#E7D5BB]/60 px-3.5 py-1.5 rounded-full font-medium">
-                  Use ← → keys to browse
-                </span>
               </div>
             </div>
           </div>
