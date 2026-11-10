@@ -56,7 +56,7 @@ export const RESTAURANT_INFO = {
   ],
   owner: {
     title: "Founder & Proprietor",
-    name: "Founder & Owner",
+    name: "Nayan Jyoti Sarma",
     image: "/assets/aistudio/WhatsApp_Image_2026-11-10_at_3.23.56_PM_b0ba283b.jpeg",
     quote: "When we built New Highway Chef Dhaba on NH-31, our dream was simple: to serve food that tastes like home, cooked with heart, pure ingredients, and real Indian hospitality. Every traveler and family stopping here is our guest of honour.",
     commitment: "Traditional clay tandoor cooking, authentic Assamese specialties, and clean, green open-air dining in Rangia."
@@ -211,6 +211,15 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
 // 100% REAL RESTAURANT PHOTOGRAPHY ONLY (ZERO AI-GENERATED DISH PHOTOS)
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
+    id: 'g-real-highway-facade',
+    title: 'Illuminated NH-31 Highway Board & Parking',
+    category: 'Restaurant Exterior',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-10_at_3.23.05_PM_35c9305f.jpeg',
+    caption: 'Official landmark red signboard of New Highway Chef Dhaba along Rangia Highway NH-31 with illuminated pagoda entrance and guest parking.',
+    aspect: 'wide',
+    isRealPhoto: true
+  },
+  {
     id: 'g-real-billboard',
     title: 'Official NH-31 Highway Billboard',
     category: 'Restaurant Exterior',
@@ -250,8 +259,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'g-real-night-entrance',
     title: 'Illuminated Highway Entrance at Night',
     category: 'Restaurant Exterior',
-    image: '/assets/aistudio/unnamed_98627df7.jpg',
-    caption: 'Glowing red entrance and neon parking area welcoming nighttime highway travelers and commuters to Rangia.',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-10_at_3.23.05_PM_35c9305f.jpeg',
+    caption: 'Glowing red entrance board and illuminated family restaurant welcoming nighttime highway travelers and commuters to Rangia.',
     aspect: 'wide',
     isRealPhoto: true
   },

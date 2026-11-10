@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Plus, Check, UtensilsCrossed } from 'lucide-react';
-import paneerDalImg from '../assets/images/dish_paneer_dal_handi_1794314544431.jpg';
-import tandoorRotiImg from '../assets/images/dish_tandoori_roti_naan_1794314562496.jpg';
+import { Plus, Check, UtensilsCrossed, Sparkles, Flame } from 'lucide-react';
+import { motion } from 'motion/react';
+import { DietaryIcon } from './DietaryIcon';
 
 interface SignatureFoodProps {
   onAddToCart: (dish: { id: string; name: string; price: number }) => void;
@@ -18,301 +18,315 @@ export const SignatureFood: React.FC<SignatureFoodProps> = ({ onAddToCart, onOpe
   };
 
   return (
-    <section id="specialties" className="relative py-16 sm:py-24 bg-[#FAF6EE] overflow-hidden">
+    <section id="specialties" className="relative py-16 sm:py-24 bg-[#F8F0E9] overflow-hidden">
+      
+      {/* Organic Background Blobs */}
+      <div className="absolute top-20 right-10 w-96 h-96 rounded-full bg-[#E8C5BE]/25 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-[#C97870]/10 blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-2xl mb-12 sm:mb-16 text-left">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#98543D] mb-3">
-            <span className="w-6 h-[1.5px] bg-[#98543D]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8C5BE]/40 text-[#633C38] text-xs font-semibold tracking-widest uppercase mb-3 self-start border border-[#C97870]/30">
+            <Sparkles className="w-3.5 h-3.5 text-[#C97870]" />
             <span>KITCHEN SPECIALTIES</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#302820] leading-tight mb-4 [text-wrap:balance]">
-            Crafted In Our Handis <br />
-            <span className="font-normal italic text-[#424735]">& Live Clay Tandoor</span>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#633C38] leading-tight mb-4 [text-wrap:balance]">
+            Cooked In Cast-Iron Handis <br />
+            <span className="font-normal italic text-[#C97870]">& Charcoal Tandoor</span>
           </h2>
 
-          <p className="text-base text-[#302820]/75 leading-relaxed">
-            Every dish is made with fresh local ingredients, slow-simmered spices, and pure desi ghee.
+          <p className="text-base text-[#633C38]/75 leading-relaxed">
+            Every dish is made with fresh local ingredients, freshly pounded spices, and rich desi ghee.
           </p>
         </div>
 
-        {/* Feature 1: Paneer & Dal Handi Split Editorial */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 lg:mb-20">
+        {/* Clean 2-Column Editorial Specialties Layout (Zero AI Food Images) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           
-          {/* Real Food Image in Organic Curved Frame */}
-          <div className="lg:col-span-7">
-            <div className="relative rounded-[40px_16px_40px_16px] overflow-hidden border-4 border-[#FFFFFF] shadow-2xl bg-[#302820] group">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={paneerDalImg}
-                  alt="Rich Paneer Butter Masala and Dal Tadka Handi at New Highway Chef Dhaba"
-                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
-                  loading="lazy"
-                />
-              </div>
-              <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-[#F2EBDD] pointer-events-none">
-                <div>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#D8CBB6]">
-                    Traditional Handi
-                  </span>
-                  <p className="font-serif text-lg font-bold">Paneer & Slow-Simmered Dal</p>
-                </div>
-                <span className="text-xs bg-[#98543D] px-3 py-1 rounded-full font-semibold">
-                  Pure Desi Spices
+          {/* Column 1: Traditional Handi & Thali Specialties */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col justify-between space-y-6 p-6 sm:p-8 rounded-[40px_16px_40px_16px] bg-[#E8C5BE]/40 border border-[#E8C5BE] shadow-sm"
+          >
+            <div className="pb-4 border-b border-[#633C38]/10 flex items-center justify-between">
+              <div>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-[#C97870] block mb-1">
+                  Traditional Handi & Thalis
                 </span>
+                <h3 className="font-serif text-2xl font-bold text-[#633C38]">
+                  Paneer & Slow-Simmered Meals
+                </h3>
               </div>
+              <span className="text-[11px] bg-[#C97870]/15 text-[#C97870] px-3.5 py-1 rounded-full font-semibold border border-[#C97870]/30">
+                Pure Desi Spices
+              </span>
             </div>
-          </div>
 
-          {/* Editorial Menu List */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-            
-            {/* Item 1: Paneer Butter Masala */}
-            <div className="pb-5 border-b border-[#D8CBB6]">
-              <div className="flex items-baseline justify-between mb-1.5">
+            <div className="space-y-5 flex-1 flex flex-col justify-between">
+              {/* Item 1: Paneer Butter Masala */}
+              <div className="p-5 rounded-[24px_8px_24px_8px] bg-[#FFFDFC] border border-[#E8C5BE] shadow-xs hover:border-[#C97870]/60 transition-all">
+                <div className="flex items-baseline justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <DietaryIcon isVeg={true} className="w-4 h-4" />
+                    <h4 className="font-serif text-xl font-bold text-[#633C38]">Paneer Butter Masala</h4>
+                  </div>
+                  <span className="font-serif text-lg font-bold text-[#C97870]">₹230</span>
+                </div>
+                <p className="text-xs text-[#633C38]/70 mb-3 leading-relaxed">
+                  Tender malai paneer simmered in velvet tomato, cashew and butter gravy with fresh ginger juliennes.
+                </p>
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
-                  <h3 className="font-serif text-xl font-bold text-[#302820]">Paneer Butter Masala</h3>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleAdd('vg-15', 'Paneer Butter Masala', 230)}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#C97870] hover:bg-[#A65A52] text-[#FFFDFC] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-xs border border-[#E8C5BE]/40"
+                  >
+                    {addedItem === 'vg-15' ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-[#FFFDFC]" />
+                        <span>Added to Order</span>
+                      </>
+                    ) : (
+                      <>
+                        <Plus className="w-3.5 h-3.5 text-[#FFFDFC]" />
+                        <span>Add Dish</span>
+                      </>
+                    )}
+                  </motion.button>
+
+                  <button
+                    onClick={() => onOpenOrder('Paneer Butter Masala')}
+                    className="p-2 rounded-full border border-[#633C38]/20 text-[#633C38] hover:bg-[#633C38] hover:text-[#FFFDFC] transition-colors cursor-pointer"
+                    title="Quick Order"
+                  >
+                    <UtensilsCrossed className="w-3.5 h-3.5" />
+                  </button>
                 </div>
-                <span className="font-serif text-lg font-bold text-[#98543D]">₹230</span>
               </div>
-              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
-                Tender malai paneer cubes simmered in a velvet tomato, butter, and cashew gravy with fresh ginger juliennes.
-              </p>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => handleAdd('vg-15', 'Paneer Butter Masala', 230)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
-                >
-                  {addedItem === 'vg-15' ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-[#D8CBB6]" />
-                      <span>Added</span>
-                    </>
-                  ) : (
-                    <>
-                      <Plus className="w-3.5 h-3.5 text-[#D8CBB6]" />
-                      <span>Add to Order</span>
-                    </>
-                  )}
-                </button>
 
-                <button
-                  onClick={() => onOpenOrder('Paneer Butter Masala')}
-                  className="p-1.5 rounded-full border border-[#302820]/30 text-[#302820] hover:bg-[#302820] hover:text-[#F2EBDD] transition-colors cursor-pointer"
-                  title="Quick Order"
-                >
-                  <UtensilsCrossed className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Item 2: Paneer Thali */}
-            <div className="pb-5 border-b border-[#D8CBB6]">
-              <div className="flex items-baseline justify-between mb-1.5">
+              {/* Item 2: Paneer Thali */}
+              <div className="p-5 rounded-[8px_24px_8px_24px] bg-[#FFFDFC] border border-[#E8C5BE] shadow-xs hover:border-[#C97870]/60 transition-all">
+                <div className="flex items-baseline justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <DietaryIcon isVeg={true} className="w-4 h-4" />
+                    <h4 className="font-serif text-xl font-bold text-[#633C38]">Paneer Thali Special</h4>
+                  </div>
+                  <span className="font-serif text-lg font-bold text-[#C97870]">₹250</span>
+                </div>
+                <p className="text-xs text-[#633C38]/70 mb-3 leading-relaxed">
+                  Full royal thali: rich motor paneer, yellow dal tadka, aromatic rice, tandoori roti, papad & salad.
+                </p>
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
-                  <h3 className="font-serif text-xl font-bold text-[#302820]">Paneer Thali Special</h3>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleAdd('th-7', 'Paneer Thali', 250)}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#C97870] hover:bg-[#A65A52] text-[#FFFDFC] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-xs border border-[#E8C5BE]/40"
+                  >
+                    {addedItem === 'th-7' ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-[#FFFDFC]" />
+                        <span>Added to Order</span>
+                      </>
+                    ) : (
+                      <>
+                        <Plus className="w-3.5 h-3.5 text-[#FFFDFC]" />
+                        <span>Add Dish</span>
+                      </>
+                    )}
+                  </motion.button>
+
+                  <button
+                    onClick={() => onOpenOrder('Paneer Thali')}
+                    className="p-2 rounded-full border border-[#633C38]/20 text-[#633C38] hover:bg-[#633C38] hover:text-[#FFFDFC] transition-colors cursor-pointer"
+                    title="Quick Order"
+                  >
+                    <UtensilsCrossed className="w-3.5 h-3.5" />
+                  </button>
                 </div>
-                <span className="font-serif text-lg font-bold text-[#98543D]">₹250</span>
               </div>
-              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
-                Complete meal with motor paneer masala, yellow dal tadka, basmati rice, hot tandoori roti, roasted papad, and fresh salad.
-              </p>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => handleAdd('th-7', 'Paneer Thali', 250)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
-                >
-                  {addedItem === 'th-7' ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-[#D8CBB6]" />
-                      <span>Added</span>
-                    </>
-                  ) : (
-                    <>
-                      <Plus className="w-3.5 h-3.5 text-[#D8CBB6]" />
-                      <span>Add to Order</span>
-                    </>
-                  )}
-                </button>
 
-                <button
-                  onClick={() => onOpenOrder('Paneer Thali')}
-                  className="p-1.5 rounded-full border border-[#302820]/30 text-[#302820] hover:bg-[#302820] hover:text-[#F2EBDD] transition-colors cursor-pointer"
-                  title="Quick Order"
-                >
-                  <UtensilsCrossed className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Item 3: Veg Thali */}
-            <div>
-              <div className="flex items-baseline justify-between mb-1.5">
+              {/* Item 3: Veg Thali */}
+              <div className="p-5 rounded-[24px_8px_24px_8px] bg-[#FFFDFC] border border-[#E8C5BE] shadow-xs hover:border-[#C97870]/60 transition-all">
+                <div className="flex items-baseline justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <DietaryIcon isVeg={true} className="w-4 h-4" />
+                    <h4 className="font-serif text-xl font-bold text-[#633C38]">Highway Veg Thali</h4>
+                  </div>
+                  <span className="font-serif text-lg font-bold text-[#C97870]">₹120</span>
+                </div>
+                <p className="text-xs text-[#633C38]/70 mb-3 leading-relaxed">
+                  Daily bestseller with seasonal mixed vegetables, yellow dal, steamed rice, and fresh tandoori roti.
+                </p>
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
-                  <h3 className="font-serif text-xl font-bold text-[#302820]">Highway Veg Thali</h3>
-                </div>
-                <span className="font-serif text-lg font-bold text-[#98543D]">₹120</span>
-              </div>
-              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
-                Our bestselling daily plate with seasonal mixed vegetables, yellow dal, steamed rice, and tandoori roti.
-              </p>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => handleAdd('th-1', 'Veg Thali', 120)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
-                >
-                  {addedItem === 'th-1' ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-[#D8CBB6]" />
-                      <span>Added</span>
-                    </>
-                  ) : (
-                    <>
-                      <Plus className="w-3.5 h-3.5 text-[#D8CBB6]" />
-                      <span>Add to Order</span>
-                    </>
-                  )}
-                </button>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleAdd('th-1', 'Veg Thali', 120)}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#C97870] hover:bg-[#A65A52] text-[#FFFDFC] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-xs border border-[#E8C5BE]/40"
+                  >
+                    {addedItem === 'th-1' ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-[#FFFDFC]" />
+                        <span>Added to Order</span>
+                      </>
+                    ) : (
+                      <>
+                        <Plus className="w-3.5 h-3.5 text-[#FFFDFC]" />
+                        <span>Add Dish</span>
+                      </>
+                    )}
+                  </motion.button>
 
-                <button
-                  onClick={() => onOpenOrder('Veg Thali')}
-                  className="p-1.5 rounded-full border border-[#302820]/30 text-[#302820] hover:bg-[#302820] hover:text-[#F2EBDD] transition-colors cursor-pointer"
-                  title="Quick Order"
-                >
-                  <UtensilsCrossed className="w-3.5 h-3.5" />
-                </button>
+                  <button
+                    onClick={() => onOpenOrder('Veg Thali')}
+                    className="p-2 rounded-full border border-[#633C38]/20 text-[#633C38] hover:bg-[#633C38] hover:text-[#FFFDFC] transition-colors cursor-pointer"
+                    title="Quick Order"
+                  >
+                    <UtensilsCrossed className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
             </div>
+          </motion.div>
 
-          </div>
-
-        </div>
-
-        {/* Feature 2: Clay Tandoor & Rotis Split Editorial (Inverted Layout) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          {/* Editorial Menu List */}
-          <div className="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-between space-y-6">
-            
-            {/* Item 1: Tandoori Roti */}
-            <div className="pb-5 border-b border-[#D8CBB6]">
-              <div className="flex items-baseline justify-between mb-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
-                  <h3 className="font-serif text-xl font-bold text-[#302820]">Tandoori Roti (Plain / Butter)</h3>
-                </div>
-                <span className="font-serif text-lg font-bold text-[#98543D]">₹30 / ₹40</span>
-              </div>
-              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
-                Hand-stretched whole wheat flatbread slapped on the walls of our red-hot clay tandoor and blistered over live embers.
-              </p>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => handleAdd('tr-plain', 'Tandoori Roti', 30)}
-                  className="px-3 py-1.5 rounded-full bg-[#D8CBB6] hover:bg-[#C4B59D] text-[#302820] text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  Plain ₹30
-                </button>
-                <button
-                  onClick={() => handleAdd('tr-butter', 'Tandoori Roti Butter', 40)}
-                  className="px-3 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  Butter ₹40
-                </button>
-              </div>
-            </div>
-
-            {/* Item 2: Butter Naan & Garlic Naan */}
-            <div className="pb-5 border-b border-[#D8CBB6]">
-              <div className="flex items-baseline justify-between mb-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
-                  <h3 className="font-serif text-xl font-bold text-[#302820]">Butter Naan / Garlic Naan</h3>
-                </div>
-                <span className="font-serif text-lg font-bold text-[#98543D]">₹70 / ₹80</span>
-              </div>
-              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
-                Pillowy leavened bread brushed liberally with golden desi butter or aromatic toasted garlic cloves.
-              </p>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => handleAdd('naan-butter', 'Butter Naan', 70)}
-                  className="px-3 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  Butter Naan ₹70
-                </button>
-                <button
-                  onClick={() => handleAdd('naan-garlic', 'Garlic Naan', 80)}
-                  className="px-3 py-1.5 rounded-full bg-[#D8CBB6] hover:bg-[#C4B59D] text-[#302820] text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  Garlic Naan ₹80
-                </button>
-              </div>
-            </div>
-
-            {/* Item 3: Duck Curry & Local Chicken */}
-            <div>
-              <div className="flex items-baseline justify-between mb-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#98543D]" title="Non-Vegetarian" />
-                  <h3 className="font-serif text-xl font-bold text-[#302820]">Duck Curry (Assam Specialty)</h3>
-                </div>
-                <span className="font-serif text-lg font-bold text-[#98543D]">₹230 / ₹460</span>
-              </div>
-              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
-                Traditional Highway Chef dhaba recipe with hearty country duck, crushed black pepper, and whole bay leaves.
-              </p>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => handleAdd('dk-half', 'Duck Curry (Half)', 230)}
-                  className="px-3 py-1.5 rounded-full bg-[#D8CBB6] hover:bg-[#C4B59D] text-[#302820] text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  Half ₹230
-                </button>
-                <button
-                  onClick={() => handleAdd('dk-full', 'Duck Curry (Full)', 460)}
-                  className="px-3 py-1.5 rounded-full bg-[#98543D] hover:bg-[#7C422F] text-[#F2EBDD] text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  Full ₹460
-                </button>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Real Food Image in Organic Curved Frame */}
-          <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="relative rounded-[16px_40px_16px_40px] overflow-hidden border-4 border-[#FFFFFF] shadow-2xl bg-[#302820] group">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={tandoorRotiImg}
-                  alt="Freshly baked blistered Indian Tandoori Rotis and Butter Naan"
-                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
-                  loading="lazy"
-                />
-              </div>
-              <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-[#F2EBDD] pointer-events-none">
-                <div>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#D8CBB6]">
-                    Live Charcoal Oven
-                  </span>
-                  <p className="font-serif text-lg font-bold">Charred Rotis & Butter Naan</p>
-                </div>
-                <span className="text-xs bg-[#424735] px-3 py-1 rounded-full font-semibold">
-                  From ₹30
+          {/* Column 2: Clay Tandoor & Assamese Specialties */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-col justify-between space-y-6 p-6 sm:p-8 rounded-[16px_40px_16px_40px] bg-[#E8C5BE]/40 border border-[#E8C5BE] shadow-sm"
+          >
+            <div className="pb-4 border-b border-[#633C38]/10 flex items-center justify-between">
+              <div>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-[#C97870] block mb-1">
+                  Live Charcoal Oven
                 </span>
+                <h3 className="font-serif text-2xl font-bold text-[#633C38]">
+                  Charred Rotis & Local Classics
+                </h3>
+              </div>
+              <span className="inline-flex items-center gap-1 text-[11px] bg-[#C97870] text-[#FFFDFC] px-3.5 py-1 rounded-full font-semibold border border-[#E8C5BE]/40">
+                <Flame className="w-3 h-3 text-[#FFFDFC]" />
+                <span>From ₹30</span>
+              </span>
+            </div>
+
+            <div className="space-y-5 flex-1 flex flex-col justify-between">
+              {/* Item 1: Tandoori Roti */}
+              <div className="p-5 rounded-[24px_8px_24px_8px] bg-[#FFFDFC] border border-[#E8C5BE] shadow-xs hover:border-[#C97870]/60 transition-all">
+                <div className="flex items-baseline justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <DietaryIcon isVeg={true} className="w-4 h-4" />
+                    <h4 className="font-serif text-xl font-bold text-[#633C38]">Tandoori Roti (Plain / Butter)</h4>
+                  </div>
+                  <span className="font-serif text-lg font-bold text-[#C97870]">₹30 / ₹40</span>
+                </div>
+                <p className="text-xs text-[#633C38]/70 mb-3 leading-relaxed">
+                  Hand-stretched whole wheat flatbread slapped on the walls of our red-hot clay tandoor over live embers.
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleAdd('tr-plain', 'Tandoori Roti', 30)}
+                    className="px-3.5 py-1.5 rounded-full bg-[#633C38] hover:bg-[#472926] text-[#FFFDFC] text-xs font-semibold transition-colors cursor-pointer"
+                  >
+                    Plain ₹30
+                  </button>
+                  <button
+                    onClick={() => handleAdd('tr-butter', 'Tandoori Roti Butter', 40)}
+                    className="px-3.5 py-1.5 rounded-full bg-[#C97870] hover:bg-[#A65A52] text-[#FFFDFC] text-xs font-semibold transition-colors cursor-pointer shadow-xs border border-[#E8C5BE]/40"
+                  >
+                    Butter ₹40
+                  </button>
+                </div>
+              </div>
+
+              {/* Item 2: Butter Naan & Garlic Naan */}
+              <div className="p-5 rounded-[8px_24px_8px_24px] bg-[#FFFDFC] border border-[#E8C5BE] shadow-xs hover:border-[#C97870]/60 transition-all">
+                <div className="flex items-baseline justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <DietaryIcon isVeg={true} className="w-4 h-4" />
+                    <h4 className="font-serif text-xl font-bold text-[#633C38]">Butter Naan / Garlic Naan</h4>
+                  </div>
+                  <span className="font-serif text-lg font-bold text-[#C97870]">₹70 / ₹80</span>
+                </div>
+                <p className="text-xs text-[#633C38]/70 mb-3 leading-relaxed">
+                  Pillowy leavened bread brushed liberally with golden desi ghee or aromatic toasted garlic cloves.
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleAdd('naan-butter', 'Butter Naan', 70)}
+                    className="px-3.5 py-1.5 rounded-full bg-[#C97870] hover:bg-[#A65A52] text-[#FFFDFC] text-xs font-semibold transition-colors cursor-pointer shadow-xs border border-[#E8C5BE]/40"
+                  >
+                    Butter Naan ₹70
+                  </button>
+                  <button
+                    onClick={() => handleAdd('naan-garlic', 'Garlic Naan', 80)}
+                    className="px-3.5 py-1.5 rounded-full bg-[#633C38] hover:bg-[#472926] text-[#FFFDFC] text-xs font-semibold transition-colors cursor-pointer"
+                  >
+                    Garlic Naan ₹80
+                  </button>
+                </div>
+              </div>
+
+              {/* Item 3: Duck Curry */}
+              <div className="p-5 rounded-[24px_8px_24px_8px] bg-[#FFFDFC] border border-[#E8C5BE] shadow-xs hover:border-[#C97870]/60 transition-all">
+                <div className="flex items-baseline justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <DietaryIcon isVeg={false} className="w-4 h-4" />
+                    <h4 className="font-serif text-xl font-bold text-[#633C38]">Duck Curry (Assam Specialty)</h4>
+                  </div>
+                  <span className="font-serif text-lg font-bold text-[#C97870]">₹230 / ₹460</span>
+                </div>
+                <p className="text-xs text-[#633C38]/70 mb-3 leading-relaxed">
+                  Traditional Highway Chef dhaba recipe with country duck, crushed black pepper, and whole bay leaves.
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleAdd('dk-half', 'Duck Curry (Half)', 230)}
+                    className="px-3.5 py-1.5 rounded-full bg-[#633C38] hover:bg-[#472926] text-[#FFFDFC] text-xs font-semibold transition-colors cursor-pointer"
+                  >
+                    Half ₹230
+                  </button>
+                  <button
+                    onClick={() => handleAdd('dk-full', 'Duck Curry (Full)', 460)}
+                    className="px-3.5 py-1.5 rounded-full bg-[#C97870] hover:bg-[#A65A52] text-[#FFFDFC] text-xs font-semibold transition-colors cursor-pointer shadow-xs border border-[#E8C5BE]/40"
+                  >
+                    Full ₹460
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
       </div>
+
+      {/* Wavy Section Divider */}
+      <div className="w-full overflow-hidden leading-none mt-16 -mb-1 text-[#F8F0E9]">
+        <svg
+          viewBox="0 0 1440 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="relative block w-full h-8 md:h-12"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,40 C320,100 720,0 1080,60 C1260,90 1380,40 1440,20 L1440,100 L0,100 Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+
     </section>
   );
 };

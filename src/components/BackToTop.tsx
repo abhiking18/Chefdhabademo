@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface BackToTopProps {
   onOpenOrder: () => void;
@@ -15,11 +16,10 @@ export const BackToTop: React.FC<BackToTopProps> = ({ onOpenOrder }) => {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
-      // Show after scrolling 300px
-      setIsVisible(scrollY > 300);
+      // Show after scrolling 250px
+      setIsVisible(scrollY > 250);
 
-      // Detect if user has reached the bottom footer area (within 350px of bottom)
-      // When near footer, lift higher so it NEVER blocks the footer or admin portal
+      // Detect if user has reached bottom footer area so it never blocks footer or admin portal
       const nearBottom = scrollY + windowHeight >= documentHeight - 350;
       setIsNearFooter(nearBottom);
     };
@@ -29,25 +29,31 @@ export const BackToTop: React.FC<BackToTopProps> = ({ onOpenOrder }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (!isVisible) return null;
-
   return (
-    // Moved upwards (bottom-28 by default, bottom-36 when near bottom footer)
-    <div
-      className={`fixed right-5 sm:right-6 z-40 transition-all duration-300 pointer-events-auto ${
-        isNearFooter ? 'bottom-36' : 'bottom-24 sm:bottom-28'
-      }`}
-    >
-      {/* Floating Order Online Button */}
-      <button
-        onClick={onOpenOrder}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#424735] hover:bg-[#303426] text-[#F2EBDD] font-semibold text-xs sm:text-sm shadow-xl transition-all border border-[#D8CBB6]/30 cursor-pointer"
-        title="Order Online"
-        aria-label="Order Online"
-      >
-        <MessageCircle className="w-4 h-4 text-[#D8CBB6]" />
-        <span>Order Online</span>
-      </button>
-    </div>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          className={`fixed right-5 sm:right-6 z-40 transition-all duration-300 pointer-events-auto ${
+            isNearFooter ? 'bottom-36' : 'bottom-20 sm:bottom-24'
+          }`}
+        >
+          {/* Floating Order Online Button with Curvy Shape & Soft Brick Red */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenOrder}
+            className="flex items-center gap-2 px-5 py-3 rounded-full bg-[#C97870] text-[#F8F0E9] font-bold text-xs sm:text-sm shadow-2xl hover:bg-[#B5675F] transition-all border border-[#F8F0E9]/20 cursor-pointer"
+            title="Order Online"
+            aria-label="Order Online"
+          >
+            <ShoppingBag className="w-4 h-4 text-[#F8F0E9]" />
+            <span>Order Online</span>
+          </motion.button>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

@@ -119,9 +119,9 @@ export default function App() {
   const cartTotalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#F2EBDD] text-[#302820] font-sans selection:bg-[#98543D]/30 selection:text-[#302820] flex flex-col relative">
+    <div className="min-h-screen bg-[#F8F0E9] text-[#633C38] font-sans selection:bg-[#C97870] selection:text-[#F8F0E9] flex flex-col relative overflow-x-hidden">
       
-      {/* 1. Sticky Navigation Bar (Clean Customer Experience) */}
+      {/* 1. Sticky Navigation Bar */}
       <Navbar
         onOpenOrder={() => setIsOrderModalOpen(true)}
         cartCount={cartTotalItems}
