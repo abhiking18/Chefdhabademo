@@ -1,43 +1,45 @@
 import React from 'react';
-import { Flame, Clock, Trees } from 'lucide-react';
+import { Flame, Trees, Clock } from 'lucide-react';
 
 export const OurStory: React.FC = () => {
   return (
-    <section id="story" className="relative py-14 sm:py-18 bg-[#F3ECE1] overflow-hidden">
+    <section id="story" className="relative py-16 sm:py-20 bg-[#FAF6EE] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        
+        {/* Split Editorial Composition */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Real Architecture Photographs */}
+          {/* Left Column: Asymmetrical Photo Arrangement of Real Architecture */}
           <div className="lg:col-span-6 relative flex justify-center lg:justify-start">
             
-            {/* Main Arched Real Photograph: Thatched Cabins */}
-            <div className="relative z-10 w-full max-w-[320px] sm:max-w-[360px] shadow-lg overflow-hidden rounded-t-[160px] rounded-b-[24px] border-4 border-[#FFFFFF] bg-[#241814]">
+            {/* Main Organic Photo: Thatched Cabins */}
+            <div className="relative z-10 w-full max-w-[340px] sm:max-w-[380px] shadow-xl overflow-hidden rounded-[36px_16px_36px_16px] border-4 border-[#FFFFFF] bg-[#302820]">
               <div className="aspect-[4/5] overflow-hidden">
                 <img
                   src="/assets/aistudio/unnamed__1__39c05000.jpg"
                   alt="Outdoor thatched dining cabins at New Highway Chef Dhaba Rangia"
-                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center hover:scale-104 transition-transform duration-700"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="p-3.5 bg-[#4F1824] text-[#FAF6F0] text-center">
-                <p className="font-serif text-sm font-semibold">Thatched Dining Cabins</p>
-                <p className="text-[11px] text-[#E5D9C8]">Open-air courtyard & palm garden in Rangia</p>
+              <div className="p-4 bg-[#424735] text-[#F2EBDD]">
+                <p className="font-serif text-sm font-semibold tracking-wide">Thatched Dining Cabins</p>
+                <p className="text-xs text-[#D8CBB6] mt-0.5">Open courtyard & palm breeze in Rangia</p>
               </div>
             </div>
 
-            {/* Overlapping Circular Image: Bamboo Machan */}
-            <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:right-4 z-20 w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-xl border-4 border-[#FFFFFF] bg-[#241814] group">
+            {/* Overlapping Curved Secondary Photo: Two-Story Bamboo Machan */}
+            <div className="absolute -bottom-8 -right-2 sm:-bottom-10 sm:right-2 z-20 w-44 h-44 sm:w-52 sm:h-52 rounded-[28px_12px_28px_12px] overflow-hidden shadow-2xl border-4 border-[#FFFFFF] bg-[#302820] group">
               <img
                 src="/assets/aistudio/unnamed__2__57eaae68.jpg"
-                alt="Two-story bamboo machan dining hut at New Highway Chef Dhaba"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                alt="Two-story bamboo machan treehouse at New Highway Chef Dhaba"
+                className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end justify-center pb-2.5">
-                <span className="text-[10px] font-semibold text-[#FAF6F0] tracking-wider uppercase bg-[#4F1824]/90 px-2.5 py-0.5 rounded-full">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#302820]/80 via-transparent to-transparent flex items-end p-3">
+                <span className="text-[10px] font-semibold text-[#F2EBDD] tracking-wider uppercase bg-[#98543D] px-2.5 py-0.5 rounded-full">
                   Bamboo Machan
                 </span>
               </div>
@@ -45,56 +47,56 @@ export const OurStory: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Editorial Text & Values */}
+          {/* Right Column: Editorial Typography & Heritage */}
           <div className="lg:col-span-6 flex flex-col justify-center text-left">
             
-            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#8C4A38] mb-2">
-              <span className="w-5 h-[2px] bg-[#C9822C]" />
-              <span>OUR TRADITION</span>
+            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#98543D] mb-3">
+              <span className="w-6 h-[1.5px] bg-[#98543D]" />
+              <span>THE HIGHWAY TRADITION</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#4F1824] leading-tight mb-4 [text-wrap:balance]">
-              More Than A Meal. <br />
-              <span className="text-[#241814] font-normal italic">It's Real Hospitality.</span>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#302820] leading-tight mb-5 [text-wrap:balance]">
+              Built For Travellers. <br />
+              <span className="font-normal italic text-[#424735]">Cooked With Care.</span>
             </h2>
 
-            <p className="text-base text-[#44332B] leading-relaxed mb-3">
-              At New Highway Chef Dhaba on NH-31, we combine fresh ingredients, hot charcoal tandoors, and genuine roadside warmth.
+            <p className="text-base text-[#302820]/85 leading-relaxed mb-4">
+              On the long stretches of NH-31 through Rangia, a good meal is more than food — it is a moment to rest, breathe, and feel looked after.
             </p>
 
-            <p className="text-sm text-[#44332B]/90 leading-relaxed mb-6">
-              Nestled on the highway in Rangia, Assam, our establishment features open-air thatched dining huts and a two-story bamboo treehouse machan. Whether stopping for our famed Thalis (₹120–₹340), authentic Duck Curry, or piping hot Tandoori Rotis (₹30), you are always welcomed like family.
+            <p className="text-sm text-[#302820]/75 leading-relaxed mb-8">
+              At New Highway Chef Dhaba, we slow-simmer our dals in traditional handis, toss garden-fresh paneer on roaring cast-iron tawas, and bake our tandoori rotis on glowing charcoal embers. Guests dine under open-air thatched huts or in our signature two-story bamboo machan treehouse, surrounded by evergreen pine trees and quiet garden paths.
             </p>
 
-            {/* Three Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[#E5D9C8]">
-              <div className="p-3 rounded-xl bg-[#FAF6F0] border border-[#E5D9C8]">
-                <div className="w-8 h-8 rounded-lg bg-[#4F1824] text-[#FAF6F0] flex items-center justify-center mb-2 shadow-sm">
-                  <Flame className="w-4 h-4 text-[#C9822C]" />
+            {/* Three Minimalist Editorial Points (No Card Soup) */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-[#D8CBB6]">
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Flame className="w-4 h-4 text-[#98543D]" />
+                  <h3 className="font-serif text-sm font-bold text-[#302820]">Live Clay Tandoor</h3>
                 </div>
-                <h3 className="font-serif text-sm font-bold text-[#4F1824]">Clay Tandoor</h3>
-                <p className="text-[11px] text-[#44332B] mt-0.5">
-                  Hot Rotis (₹30) & Naan (₹70) straight from live charcoal.
+                <p className="text-xs text-[#302820]/70 leading-relaxed">
+                  Rotis (₹30) & Naan (₹70) rolled by hand and baked to order.
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#FAF6F0] border border-[#E5D9C8]">
-                <div className="w-8 h-8 rounded-lg bg-[#4F1824] text-[#FAF6F0] flex items-center justify-center mb-2 shadow-sm">
-                  <Trees className="w-4 h-4 text-[#C9822C]" />
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Trees className="w-4 h-4 text-[#424735]" />
+                  <h3 className="font-serif text-sm font-bold text-[#302820]">Open-Air Cabins</h3>
                 </div>
-                <h3 className="font-serif text-sm font-bold text-[#4F1824]">Thatched Cabins</h3>
-                <p className="text-[11px] text-[#44332B] mt-0.5">
-                  Open huts, bamboo machan & garden breezes.
+                <p className="text-xs text-[#302820]/70 leading-relaxed">
+                  Thatched huts & bamboo machan with cool garden shade.
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#FAF6F0] border border-[#E5D9C8]">
-                <div className="w-8 h-8 rounded-lg bg-[#4F1824] text-[#FAF6F0] flex items-center justify-center mb-2 shadow-sm">
-                  <Clock className="w-4 h-4 text-[#C9822C]" />
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Clock className="w-4 h-4 text-[#98543D]" />
+                  <h3 className="font-serif text-sm font-bold text-[#302820]">Till 11:30 PM</h3>
                 </div>
-                <h3 className="font-serif text-sm font-bold text-[#4F1824]">Till 11:30 PM</h3>
-                <p className="text-[11px] text-[#44332B] mt-0.5">
-                  Open daily on NH-31 for highway travelers & families.
+                <p className="text-xs text-[#302820]/70 leading-relaxed">
+                  Open every single day for breakfast, lunch, and late night.
                 </p>
               </div>
             </div>

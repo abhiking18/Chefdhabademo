@@ -38,14 +38,14 @@ export const BackToTop: React.FC<BackToTopProps> = ({ onOpenOrder }) => {
         isNearFooter ? 'bottom-36' : 'bottom-24 sm:bottom-28'
       }`}
     >
-      {/* Floating Order Online Button (Arrow button removed as requested) */}
+      {/* Floating Order Online Button */}
       <button
         onClick={onOpenOrder}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366] text-white font-bold text-xs sm:text-sm shadow-2xl hover:bg-[#20ba5a] transition-all transform hover:scale-105 border border-white/20 cursor-pointer"
-        title="Order via WhatsApp"
-        aria-label="Order on WhatsApp"
+        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#424735] hover:bg-[#303426] text-[#F2EBDD] font-semibold text-xs sm:text-sm shadow-xl transition-all border border-[#D8CBB6]/30 cursor-pointer"
+        title="Order Online"
+        aria-label="Order Online"
       >
-        <MessageCircle className="w-4 h-4 text-white fill-white" />
+        <MessageCircle className="w-4 h-4 text-[#D8CBB6]" />
         <span>Order Online</span>
       </button>
     </div>

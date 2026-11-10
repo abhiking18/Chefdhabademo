@@ -2,114 +2,114 @@ import React from 'react';
 
 export const WhyVisitUs: React.FC = () => {
   return (
-    <section id="why-visit" className="relative py-14 sm:py-18 bg-[#F3ECE1] overflow-hidden">
+    <section id="why-visit" className="relative py-16 sm:py-24 bg-[#FAF6EE] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#8C4A38] mb-2">
-            <span className="w-5 h-[2px] bg-[#C9822C]" />
-            <span>WHY VISIT US</span>
-            <span className="w-5 h-[2px] bg-[#C9822C]" />
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#98543D] mb-3">
+            <span className="w-6 h-[1.5px] bg-[#98543D]" />
+            <span>THE HIGHWAY STOPOVER</span>
+            <span className="w-6 h-[1.5px] bg-[#98543D]" />
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#4F1824] mb-2 [text-wrap:balance]">
-            The Highway Experience
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#302820] mb-3 [text-wrap:balance]">
+            Why Travelers Choose Us
           </h2>
 
-          <p className="text-sm sm:text-base text-[#44332B]">
-            Authentic taste, relaxing open air, and safe space for kids along NH-31 Rangia.
+          <p className="text-sm sm:text-base text-[#302820]/75">
+            Designed for highway drivers, weary families, and local food lovers seeking good honest hospitality.
           </p>
         </div>
 
-        {/* 3 Real Premises Photo Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 items-stretch">
+        {/* 3 Asymmetrical Editorial Photo Columns with Organic Curves */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          {/* Card 1: Outdoor Thatched Cabins & Walkway */}
-          <div className="bg-[#FAF6F0] rounded-2xl overflow-hidden border border-[#E5D9C8] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#241814]">
+          {/* Feature 1: Garden Walkway & Cottages */}
+          <div className="flex flex-col justify-between group">
+            <div className="relative aspect-[4/3] rounded-[32px_12px_32px_12px] overflow-hidden border-2 border-[#FFFFFF] shadow-lg bg-[#302820] mb-4">
               <img
                 src="/assets/aistudio/unnamed__8__f12eb660.jpg"
                 alt="Garden walkway with cottages at New Highway Chef Dhaba"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-700"
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute top-2.5 right-2.5 bg-[#4F1824] text-[#FAF6F0] text-[10px] font-bold px-2 py-0.5 rounded-full">
+              <span className="absolute top-3 right-3 bg-[#302820]/90 text-[#F2EBDD] text-[10px] font-bold px-2.5 py-0.5 rounded-full">
                 01
-              </div>
+              </span>
             </div>
 
-            <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+            <div className="text-left flex-1 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#8C4A38] block mb-0.5">
-                  Relaxing Ambience
+                <span className="text-[10px] uppercase font-bold tracking-widest text-[#98543D] block mb-1">
+                  Space To Unwind
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#4F1824] mb-1.5">
-                  Thatched Cabins & Garden
+                <h3 className="font-serif text-xl font-bold text-[#302820] mb-2">
+                  Thatched Cottages & Garden
                 </h3>
-                <p className="text-xs text-[#44332B] leading-relaxed">
-                  Breezy open huts, palm garden pathways, and a two-story bamboo machan for highway dining.
+                <p className="text-xs text-[#302820]/75 leading-relaxed">
+                  Stone-lined pathways bordered by fresh flowers, private green dining cottages, and cool natural breezes away from traffic fumes.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Kids Playground with Swings */}
-          <div className="bg-[#FAF6F0] rounded-2xl overflow-hidden border border-[#E5D9C8] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#241814]">
+          {/* Feature 2: Kids Swings & Play Area */}
+          <div className="flex flex-col justify-between group">
+            <div className="relative aspect-[4/3] rounded-[12px_32px_12px_32px] overflow-hidden border-2 border-[#FFFFFF] shadow-lg bg-[#302820] mb-4">
               <img
                 src="/assets/aistudio/WhatsApp_Image_2026-11-10_at_3.23.01_PM__1__df40220a.jpeg"
                 alt="Child playing on the swings at New Highway Chef Dhaba playground"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top group-hover:scale-104 transition-transform duration-700"
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute top-2.5 right-2.5 bg-[#C9822C] text-[#241814] text-[10px] font-bold px-2 py-0.5 rounded-full">
+              <span className="absolute top-3 right-3 bg-[#98543D] text-[#F2EBDD] text-[10px] font-bold px-2.5 py-0.5 rounded-full">
                 02
-              </div>
+              </span>
             </div>
 
-            <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+            <div className="text-left flex-1 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#8C4A38] block mb-0.5">
-                  Family First
+                <span className="text-[10px] uppercase font-bold tracking-widest text-[#424735] block mb-1">
+                  Family Friendly
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#4F1824] mb-1.5">
-                  Kids' Playground & Swings
+                <h3 className="font-serif text-xl font-bold text-[#302820] mb-2">
+                  Outdoor Swings & Play Area
                 </h3>
-                <p className="text-xs text-[#44332B] leading-relaxed">
-                  Safe outdoor play area with swings and slides right in front of dining huts.
+                <p className="text-xs text-[#302820]/75 leading-relaxed">
+                  A safe, dedicated playground with traditional swings and slides directly adjoining family dining huts so parents can relax.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Card 3: Real NH-31 Highway Location */}
-          <div className="bg-[#FAF6F0] rounded-2xl overflow-hidden border border-[#E5D9C8] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#241814]">
+          {/* Feature 3: NH-31 Highway Location */}
+          <div className="flex flex-col justify-between group">
+            <div className="relative aspect-[4/3] rounded-[32px_12px_32px_12px] overflow-hidden border-2 border-[#FFFFFF] shadow-lg bg-[#302820] mb-4">
               <img
                 src="/assets/aistudio/unnamed__5__61968f81.jpg"
                 alt="New Highway Chef Dhaba billboard on NH-31 Rangia"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-700"
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute top-2.5 right-2.5 bg-[#4F1824] text-[#FAF6F0] text-[10px] font-bold px-2 py-0.5 rounded-full">
+              <span className="absolute top-3 right-3 bg-[#302820]/90 text-[#F2EBDD] text-[10px] font-bold px-2.5 py-0.5 rounded-full">
                 03
-              </div>
+              </span>
             </div>
 
-            <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+            <div className="text-left flex-1 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#8C4A38] block mb-0.5">
-                  Prime Highway Spot
+                <span className="text-[10px] uppercase font-bold tracking-widest text-[#98543D] block mb-1">
+                  Effortless Access
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#4F1824] mb-1.5">
-                  Directly on NH-31 Rangia
+                <h3 className="font-serif text-xl font-bold text-[#302820] mb-2">
+                  Direct Roadside Parking on NH-31
                 </h3>
-                <p className="text-xs text-[#44332B] leading-relaxed">
-                  Spacious parking for cars and buses, open daily until 11:30 PM with hot tandoor meals.
+                <p className="text-xs text-[#302820]/75 leading-relaxed">
+                  Located right on the main highway in Rangia, Assam with extensive parking space for cars, traveler vans, and buses.
                 </p>
               </div>
             </div>

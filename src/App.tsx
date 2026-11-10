@@ -119,7 +119,7 @@ export default function App() {
   const cartTotalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#FAF6F0] text-[#241814] font-sans selection:bg-[#C9822C]/25 selection:text-[#4F1824] flex flex-col relative">
+    <div className="min-h-screen bg-[#F2EBDD] text-[#302820] font-sans selection:bg-[#98543D]/30 selection:text-[#302820] flex flex-col relative">
       
       {/* 1. Sticky Navigation Bar (Clean Customer Experience) */}
       <Navbar

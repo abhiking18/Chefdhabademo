@@ -1,222 +1,315 @@
 import React, { useState } from 'react';
 import { Plus, Check, UtensilsCrossed } from 'lucide-react';
+import paneerDalImg from '../assets/images/dish_paneer_dal_handi_1794314544431.jpg';
+import tandoorRotiImg from '../assets/images/dish_tandoori_roti_naan_1794314562496.jpg';
 
 interface SignatureFoodProps {
   onAddToCart: (dish: { id: string; name: string; price: number }) => void;
   onOpenOrder: (selectedDish?: string) => void;
 }
 
-interface SignatureItem {
-  id: string;
-  name: string;
-  tagline: string;
-  price: number;
-  halfPrice?: number;
-  isVeg: boolean;
-  highlight: string;
-  category: string;
-}
-
 export const SignatureFood: React.FC<SignatureFoodProps> = ({ onAddToCart, onOpenOrder }) => {
   const [addedItem, setAddedItem] = useState<string | null>(null);
 
-  const specialties: SignatureItem[] = [
-    {
-      id: 'th-1',
-      name: 'Veg Thali',
-      tagline: 'Yellow dal tadka, seasonal sabzi, tandoori roti & rice',
-      price: 120,
-      isVeg: true,
-      highlight: 'Best Seller',
-      category: 'Highway Thali'
-    },
-    {
-      id: 'th-7',
-      name: 'Paneer Thali',
-      tagline: 'Rich motor paneer masala, salad, papad & tandoori roti',
-      price: 250,
-      isVeg: true,
-      highlight: 'Veg Special',
-      category: 'Highway Thali'
-    },
-    {
-      id: 'th-4',
-      name: 'Local Chicken Thali',
-      tagline: 'Desi local chicken curry slow-simmered with whole spices',
-      price: 300,
-      isVeg: false,
-      highlight: 'Desi Chicken',
-      category: 'Highway Thali'
-    },
-    {
-      id: 'dk-1',
-      name: 'Duck Curry',
-      tagline: 'Traditional Assam highway specialty with crushed black pepper',
-      price: 460,
-      halfPrice: 230,
-      isVeg: false,
-      highlight: 'Assam Hit',
-      category: 'Local Specialty'
-    },
-    {
-      id: 'fs-1',
-      name: 'Fish Tenga',
-      tagline: 'Authentic Assamese tangy fish curry with fresh lemon & herbs',
-      price: 220,
-      isVeg: false,
-      highlight: 'River Fish',
-      category: 'Local Specialty'
-    },
-    {
-      id: 'td-1',
-      name: 'Tandoori Roti & Naan',
-      tagline: 'Roti (₹30) & Butter Naan (₹70) baked on live clay charcoal',
-      price: 70,
-      isVeg: true,
-      highlight: 'Clay Tandoor',
-      category: 'Tandoori'
-    }
-  ];
-
-  const handleAdd = (item: SignatureItem, price: number, variantName?: string) => {
-    const finalName = variantName ? `${item.name} (${variantName})` : item.name;
-    const finalId = variantName ? `${item.id}-${variantName}` : item.id;
-    onAddToCart({ id: finalId, name: finalName, price });
-    setAddedItem(finalId);
+  const handleAdd = (id: string, name: string, price: number) => {
+    onAddToCart({ id, name, price });
+    setAddedItem(id);
     setTimeout(() => setAddedItem(null), 1500);
   };
 
   return (
-    <section id="signature" className="relative py-14 sm:py-18 bg-[#F3ECE1] overflow-hidden">
+    <section id="specialties" className="relative py-16 sm:py-24 bg-[#FAF6EE] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header - Clean & Tight */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#8C4A38] mb-2">
-            <span className="w-5 h-[2px] bg-[#C9822C]" />
+        {/* Section Header */}
+        <div className="max-w-2xl mb-12 sm:mb-16 text-left">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#98543D] mb-3">
+            <span className="w-6 h-[1.5px] bg-[#98543D]" />
             <span>KITCHEN SPECIALTIES</span>
-            <span className="w-5 h-[2px] bg-[#C9822C]" />
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#4F1824] mb-2 [text-wrap:balance]">
-            Highway Favorites & Thalis
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#302820] leading-tight mb-4 [text-wrap:balance]">
+            Crafted In Our Handis <br />
+            <span className="font-normal italic text-[#424735]">& Live Clay Tandoor</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#44332B]">
-            Prepared fresh daily with authentic spices, generous portions, and live tandoor breads.
+          <p className="text-base text-[#302820]/75 leading-relaxed">
+            Every dish is made with fresh local ingredients, slow-simmered spices, and pure desi ghee.
           </p>
         </div>
 
-        {/* 6 Clean Editorial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
-          {specialties.map((item, idx) => {
-            const cornerShapes = [
-              'rounded-[28px_12px_28px_12px]',
-              'rounded-[12px_28px_12px_28px]',
-              'rounded-[24px_12px_24px_12px]'
-            ];
-            const cardShape = cornerShapes[idx % cornerShapes.length];
-
-            return (
-              <div
-                key={item.id}
-                className={`group relative bg-[#FAF6F0] ${cardShape} p-5 sm:p-6 border border-[#E5D9C8] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-[#4F1824] text-[#FAF6F0] px-2.5 py-0.5 rounded-full">
-                      {item.highlight}
-                    </span>
-
-                    <div
-                      className={`w-3.5 h-3.5 border-2 rounded-sm flex items-center justify-center ${
-                        item.isVeg ? 'border-[#2D6A4F]' : 'border-[#A82828]'
-                      }`}
-                      title={item.isVeg ? 'Vegetarian' : 'Non-Vegetarian'}
-                    >
-                      <div
-                        className={`w-1.5 h-1.5 rounded-full ${
-                          item.isVeg ? 'bg-[#2D6A4F]' : 'bg-[#A82828]'
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="mb-1.5">
-                    <span className="text-[10px] text-[#8C4A38] uppercase font-bold tracking-wider block mb-0.5">
-                      {item.category}
-                    </span>
-                    <h3 className="font-serif text-xl font-bold text-[#4F1824] group-hover:text-[#C9822C] transition-colors leading-snug">
-                      {item.name}
-                    </h3>
-                  </div>
-
-                  <p className="text-xs text-[#44332B] leading-relaxed mb-4">
-                    {item.tagline}
-                  </p>
-                </div>
-
-                <div className="pt-3.5 border-t border-[#E5D9C8] flex items-center justify-between gap-2">
-                  <div>
-                    <span className="font-serif text-xl font-bold text-[#4F1824]">
-                      ₹{item.price}
-                    </span>
-                    {item.halfPrice && (
-                      <span className="text-[11px] text-[#8C4A38] block font-medium">
-                        Half: ₹{item.halfPrice}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-1.5">
-                    {item.halfPrice && (
-                      <button
-                        onClick={() => handleAdd(item, item.halfPrice!, 'Half')}
-                        className="px-2.5 py-1 rounded-full bg-[#E5D9C8] hover:bg-[#D6C6B0] text-[#4F1824] text-xs font-semibold transition-colors cursor-pointer"
-                      >
-                        Half (₹{item.halfPrice})
-                      </button>
-                    )}
-
-                    <button
-                      onClick={() => handleAdd(item, item.price, item.halfPrice ? 'Full' : undefined)}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#4F1824] hover:bg-[#381119] text-[#FAF6F0] text-xs font-semibold shadow-sm transition-all cursor-pointer"
-                    >
-                      {addedItem === item.id || addedItem === `${item.id}-Full` || addedItem === `${item.id}-Half` ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-[#C9822C]" />
-                          <span>Added</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="w-3.5 h-3.5 text-[#C9822C]" />
-                          <span>Add {item.halfPrice ? `(₹${item.price})` : ''}</span>
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      onClick={() => onOpenOrder(item.name)}
-                      className="p-1.5 rounded-full border border-[#4F1824]/30 text-[#4F1824] hover:bg-[#4F1824] hover:text-[#FAF6F0] transition-colors cursor-pointer"
-                      title="Quick Order"
-                    >
-                      <UtensilsCrossed className="w-3.5 h-3.5 text-[#C9822C]" />
-                    </button>
-                  </div>
-                </div>
-
+        {/* Feature 1: Paneer & Dal Handi Split Editorial */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 lg:mb-20">
+          
+          {/* Real Food Image in Organic Curved Frame */}
+          <div className="lg:col-span-7">
+            <div className="relative rounded-[40px_16px_40px_16px] overflow-hidden border-4 border-[#FFFFFF] shadow-2xl bg-[#302820] group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={paneerDalImg}
+                  alt="Rich Paneer Butter Masala and Dal Tadka Handi at New Highway Chef Dhaba"
+                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+                  loading="lazy"
+                />
               </div>
-            );
-          })}
+              <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-[#F2EBDD] pointer-events-none">
+                <div>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#D8CBB6]">
+                    Traditional Handi
+                  </span>
+                  <p className="font-serif text-lg font-bold">Paneer & Slow-Simmered Dal</p>
+                </div>
+                <span className="text-xs bg-[#98543D] px-3 py-1 rounded-full font-semibold">
+                  Pure Desi Spices
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Editorial Menu List */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            
+            {/* Item 1: Paneer Butter Masala */}
+            <div className="pb-5 border-b border-[#D8CBB6]">
+              <div className="flex items-baseline justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
+                  <h3 className="font-serif text-xl font-bold text-[#302820]">Paneer Butter Masala</h3>
+                </div>
+                <span className="font-serif text-lg font-bold text-[#98543D]">₹230</span>
+              </div>
+              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
+                Tender malai paneer cubes simmered in a velvet tomato, butter, and cashew gravy with fresh ginger juliennes.
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleAdd('vg-15', 'Paneer Butter Masala', 230)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
+                >
+                  {addedItem === 'vg-15' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[#D8CBB6]" />
+                      <span>Added</span>
+                    </>
+                  ) : (
+                    <>
+                      <Plus className="w-3.5 h-3.5 text-[#D8CBB6]" />
+                      <span>Add to Order</span>
+                    </>
+                  )}
+                </button>
+
+                <button
+                  onClick={() => onOpenOrder('Paneer Butter Masala')}
+                  className="p-1.5 rounded-full border border-[#302820]/30 text-[#302820] hover:bg-[#302820] hover:text-[#F2EBDD] transition-colors cursor-pointer"
+                  title="Quick Order"
+                >
+                  <UtensilsCrossed className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Item 2: Paneer Thali */}
+            <div className="pb-5 border-b border-[#D8CBB6]">
+              <div className="flex items-baseline justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
+                  <h3 className="font-serif text-xl font-bold text-[#302820]">Paneer Thali Special</h3>
+                </div>
+                <span className="font-serif text-lg font-bold text-[#98543D]">₹250</span>
+              </div>
+              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
+                Complete meal with motor paneer masala, yellow dal tadka, basmati rice, hot tandoori roti, roasted papad, and fresh salad.
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleAdd('th-7', 'Paneer Thali', 250)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
+                >
+                  {addedItem === 'th-7' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[#D8CBB6]" />
+                      <span>Added</span>
+                    </>
+                  ) : (
+                    <>
+                      <Plus className="w-3.5 h-3.5 text-[#D8CBB6]" />
+                      <span>Add to Order</span>
+                    </>
+                  )}
+                </button>
+
+                <button
+                  onClick={() => onOpenOrder('Paneer Thali')}
+                  className="p-1.5 rounded-full border border-[#302820]/30 text-[#302820] hover:bg-[#302820] hover:text-[#F2EBDD] transition-colors cursor-pointer"
+                  title="Quick Order"
+                >
+                  <UtensilsCrossed className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Item 3: Veg Thali */}
+            <div>
+              <div className="flex items-baseline justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
+                  <h3 className="font-serif text-xl font-bold text-[#302820]">Highway Veg Thali</h3>
+                </div>
+                <span className="font-serif text-lg font-bold text-[#98543D]">₹120</span>
+              </div>
+              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
+                Our bestselling daily plate with seasonal mixed vegetables, yellow dal, steamed rice, and tandoori roti.
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleAdd('th-1', 'Veg Thali', 120)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
+                >
+                  {addedItem === 'th-1' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[#D8CBB6]" />
+                      <span>Added</span>
+                    </>
+                  ) : (
+                    <>
+                      <Plus className="w-3.5 h-3.5 text-[#D8CBB6]" />
+                      <span>Add to Order</span>
+                    </>
+                  )}
+                </button>
+
+                <button
+                  onClick={() => onOpenOrder('Veg Thali')}
+                  className="p-1.5 rounded-full border border-[#302820]/30 text-[#302820] hover:bg-[#302820] hover:text-[#F2EBDD] transition-colors cursor-pointer"
+                  title="Quick Order"
+                >
+                  <UtensilsCrossed className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-        <div className="mt-8 text-center">
-          <a
-            href="#menu"
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#FAF6F0] text-[#4F1824] font-bold text-xs uppercase tracking-wider border border-[#E5D9C8] hover:border-[#C9822C] hover:text-[#C9822C] shadow-sm transition-all"
-          >
-            <span>Explore Complete 80+ Dishes Menu Below</span>
-          </a>
+        {/* Feature 2: Clay Tandoor & Rotis Split Editorial (Inverted Layout) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Editorial Menu List */}
+          <div className="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-between space-y-6">
+            
+            {/* Item 1: Tandoori Roti */}
+            <div className="pb-5 border-b border-[#D8CBB6]">
+              <div className="flex items-baseline justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
+                  <h3 className="font-serif text-xl font-bold text-[#302820]">Tandoori Roti (Plain / Butter)</h3>
+                </div>
+                <span className="font-serif text-lg font-bold text-[#98543D]">₹30 / ₹40</span>
+              </div>
+              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
+                Hand-stretched whole wheat flatbread slapped on the walls of our red-hot clay tandoor and blistered over live embers.
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleAdd('tr-plain', 'Tandoori Roti', 30)}
+                  className="px-3 py-1.5 rounded-full bg-[#D8CBB6] hover:bg-[#C4B59D] text-[#302820] text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  Plain ₹30
+                </button>
+                <button
+                  onClick={() => handleAdd('tr-butter', 'Tandoori Roti Butter', 40)}
+                  className="px-3 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  Butter ₹40
+                </button>
+              </div>
+            </div>
+
+            {/* Item 2: Butter Naan & Garlic Naan */}
+            <div className="pb-5 border-b border-[#D8CBB6]">
+              <div className="flex items-baseline justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#424735]" title="Vegetarian" />
+                  <h3 className="font-serif text-xl font-bold text-[#302820]">Butter Naan / Garlic Naan</h3>
+                </div>
+                <span className="font-serif text-lg font-bold text-[#98543D]">₹70 / ₹80</span>
+              </div>
+              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
+                Pillowy leavened bread brushed liberally with golden desi butter or aromatic toasted garlic cloves.
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleAdd('naan-butter', 'Butter Naan', 70)}
+                  className="px-3 py-1.5 rounded-full bg-[#302820] hover:bg-[#211A14] text-[#F2EBDD] text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  Butter Naan ₹70
+                </button>
+                <button
+                  onClick={() => handleAdd('naan-garlic', 'Garlic Naan', 80)}
+                  className="px-3 py-1.5 rounded-full bg-[#D8CBB6] hover:bg-[#C4B59D] text-[#302820] text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  Garlic Naan ₹80
+                </button>
+              </div>
+            </div>
+
+            {/* Item 3: Duck Curry & Local Chicken */}
+            <div>
+              <div className="flex items-baseline justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#98543D]" title="Non-Vegetarian" />
+                  <h3 className="font-serif text-xl font-bold text-[#302820]">Duck Curry (Assam Specialty)</h3>
+                </div>
+                <span className="font-serif text-lg font-bold text-[#98543D]">₹230 / ₹460</span>
+              </div>
+              <p className="text-xs text-[#302820]/70 mb-3 leading-relaxed">
+                Traditional Highway Chef dhaba recipe with hearty country duck, crushed black pepper, and whole bay leaves.
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleAdd('dk-half', 'Duck Curry (Half)', 230)}
+                  className="px-3 py-1.5 rounded-full bg-[#D8CBB6] hover:bg-[#C4B59D] text-[#302820] text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  Half ₹230
+                </button>
+                <button
+                  onClick={() => handleAdd('dk-full', 'Duck Curry (Full)', 460)}
+                  className="px-3 py-1.5 rounded-full bg-[#98543D] hover:bg-[#7C422F] text-[#F2EBDD] text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  Full ₹460
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Real Food Image in Organic Curved Frame */}
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <div className="relative rounded-[16px_40px_16px_40px] overflow-hidden border-4 border-[#FFFFFF] shadow-2xl bg-[#302820] group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={tandoorRotiImg}
+                  alt="Freshly baked blistered Indian Tandoori Rotis and Butter Naan"
+                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-[#F2EBDD] pointer-events-none">
+                <div>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#D8CBB6]">
+                    Live Charcoal Oven
+                  </span>
+                  <p className="font-serif text-lg font-bold">Charred Rotis & Butter Naan</p>
+                </div>
+                <span className="text-xs bg-[#424735] px-3 py-1 rounded-full font-semibold">
+                  From ₹30
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
