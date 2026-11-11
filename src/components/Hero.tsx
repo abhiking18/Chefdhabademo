@@ -63,16 +63,42 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder, onExploreMenu }) => {
             <span>NEW HIGHWAY CHEF DHABA · NH-31 RANGIA</span>
           </div>
 
-          {/* Bold Headline */}
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-bold tracking-tight text-white leading-[1.08] mb-5 [text-wrap:balance] drop-shadow-md">
-            Taste That Lingers. <br />
-            <span className="font-normal italic text-[#E8C5BE]">Hospitality That Welcomes.</span>
-          </h1>
+          {/* Animated Bold Headline */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+              }
+            }}
+            className="mb-8"
+          >
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+              }}
+              className="block font-serif text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide text-[#E8C5BE] mb-2 italic"
+            >
+              Welcome to
+            </motion.span>
 
-          {/* Minimal Description */}
-          <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl mb-8 font-normal drop-shadow-sm">
-            Authentic slow-simmered thalis, live charcoal tandoor rotis, and peaceful open-air thatched cabins along Assam’s historic highway.
-          </p>
+            <motion.h1
+              variants={{
+                hidden: { opacity: 0, y: 25, scale: 0.97 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-[4.8rem] font-extrabold tracking-tight text-white leading-[1.06] uppercase [text-wrap:balance] drop-shadow-md"
+            >
+              New Highway <br />
+              <span className="bg-gradient-to-r from-[#F8F0E9] via-[#E8C5BE] to-[#C97870] bg-clip-text text-transparent">
+                Chef Dhaba
+              </span>
+            </motion.h1>
+          </motion.div>
 
           {/* Primary Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 mb-8">
