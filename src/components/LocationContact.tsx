@@ -20,41 +20,37 @@ export const LocationContact: React.FC<LocationContactProps> = () => {
     'New Highway Chef Dhaba, Rangia, Assam 781354'
   )}`;
 
-  const whatsappUrl = `https://wa.me/${RESTAURANT_INFO.whatsappNumber}?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/91${RESTAURANT_INFO.phoneRaw}?text=${encodeURIComponent(
     RESTAURANT_INFO.whatsappPrefilledMessage
   )}`;
 
   return (
-    <section id="location" className="relative py-16 sm:py-24 bg-[#F8F0E9] overflow-hidden">
-      
-      {/* Background Organic Blurs */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-[#E8C5BE]/30 blur-3xl pointer-events-none" />
-
+    <section id="location" className="relative py-20 sm:py-28 bg-[#F8F0E9] text-[#633C38] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C97870] text-[#F8F0E9] text-xs font-semibold tracking-widest uppercase mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#F8F0E9]" />
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8C5BE]/50 border border-[#E8C5BE] text-[#C97870] text-xs font-bold tracking-widest uppercase mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#C97870]" />
             <span>FIND US ON NH-31</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#633C38] mb-3 [text-wrap:balance]">
-            Location & Highway Hospitality
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#633C38] mb-3">
+            Location & <span className="text-[#C97870]">Highway</span> Hospitality
           </h2>
 
-          <p className="text-sm sm:text-base text-[#633C38]/80">
+          <p className="text-sm sm:text-base text-[#8C5752]">
             Convenient highway access, expansive parking, and hot fresh meals right on NH-31 in Rangia, Assam.
           </p>
         </div>
 
-        {/* Real Entrance Signboard Feature with Organic Curves */}
+        {/* Real Entrance Signboard Feature Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6 }}
-          className="mb-14 relative rounded-[50px_20px_50px_20px] overflow-hidden border-2 border-[#F8F0E9] shadow-2xl bg-[#633C38]"
+          className="mb-14 relative rounded-3xl overflow-hidden border border-[#E8C5BE] shadow-md bg-[#FFFDFC]"
         >
           <div className="grid grid-cols-1 md:grid-cols-12 items-center">
             
@@ -66,51 +62,51 @@ export const LocationContact: React.FC<LocationContactProps> = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#633C38]/80 via-transparent to-transparent" />
-              <div className="absolute top-4 left-4 bg-[#633C38] text-[#F8F0E9] font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-[#E8C5BE]/40 shadow-xs">
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#FFFDFC] via-transparent to-transparent" />
+              <div className="absolute top-4 left-4 bg-[#633C38]/80 backdrop-blur-md text-[#FFFDFC] font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                 Highway Entrance View
               </div>
             </div>
 
-            <div className="md:col-span-5 p-8 bg-[#633C38] text-[#F8F0E9] flex flex-col justify-center h-full">
-              <span className="text-[10px] uppercase tracking-widest font-bold text-[#E8C5BE] mb-1">
+            <div className="md:col-span-5 p-8 bg-[#FFFDFC] text-[#633C38] flex flex-col justify-center h-full">
+              <span className="text-xs uppercase tracking-widest font-bold text-[#C97870] mb-1">
                 Landmark on NH-31
               </span>
-              <h3 className="font-serif text-2xl font-bold text-[#F8F0E9] mb-3">
+              <h3 className="text-2xl font-bold text-[#633C38] mb-3">
                 Your Highway Oasis
               </h3>
-              <p className="text-xs sm:text-sm text-[#F8F0E9]/80 leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#8C5752] leading-relaxed mb-6">
                 Easy to spot with our glowing illuminated board along the road. Features extensive parking, live clay tandoor, clean washrooms, and quick service.
               </p>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-[#C97870] text-[11px] text-[#F8F0E9] font-semibold">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="px-3 py-1 rounded-full bg-[#C97870] text-[11px] text-[#FFFDFC] font-bold">
                   Veg & Non-Veg
                 </span>
-                <span className="text-xs text-[#E8C5BE]">Open Daily till 11:30 PM</span>
+                <span className="text-xs font-bold text-[#633C38]">Open Daily till 11:30 PM</span>
               </div>
             </div>
 
           </div>
         </motion.div>
 
-        {/* 2-Column Split: Info Card & Curved Embedded Map */}
+        {/* 2-Column Split: Info Card & Embedded Map */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Contact Cards */}
-          <div className="lg:col-span-5 bg-[#FFFDFC] rounded-[40px_16px_40px_16px] p-6 sm:p-8 border border-[#E8C5BE] shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-[#FFFDFC] rounded-3xl p-6 sm:p-8 border border-[#E8C5BE] shadow-md flex flex-col justify-between">
             <div>
-              <div className="mb-6 pb-6 border-b border-[#633C38]/10">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#C97870]">
+              <div className="mb-6 pb-6 border-b border-[#E8C5BE]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#C97870]">
                   Address
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-[#633C38] mt-1">
+                <h3 className="text-2xl font-bold text-[#633C38] mt-1">
                   {RESTAURANT_INFO.name}
                 </h3>
-                <div className="flex items-start gap-2.5 mt-3 text-xs sm:text-sm text-[#633C38]/80">
+                <div className="flex items-start gap-2.5 mt-3 text-xs sm:text-sm text-[#8C5752]">
                   <MapPin className="w-4 h-4 text-[#C97870] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold text-[#633C38]">{RESTAURANT_INFO.location}</p>
-                    <p className="text-xs text-[#633C38]/60 mt-0.5">{RESTAURANT_INFO.addressNotes}</p>
+                    <p className="text-xs text-[#8C5752] mt-0.5">{RESTAURANT_INFO.addressNotes}</p>
                   </div>
                 </div>
               </div>
@@ -119,45 +115,45 @@ export const LocationContact: React.FC<LocationContactProps> = () => {
               <div className="space-y-4 mb-8">
                 
                 {/* Phone */}
-                <div className="flex items-center justify-between p-3.5 rounded-[18px_6px_18px_6px] bg-[#E8C5BE]/30 border border-[#E8C5BE]">
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-[#F8F0E9] border border-[#E8C5BE]">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#633C38] text-[#F8F0E9] flex items-center justify-center">
-                      <Phone className="w-3.5 h-3.5" />
+                    <div className="w-9 h-9 rounded-xl bg-[#E8C5BE]/60 text-[#C97870] flex items-center justify-center border border-[#E8C5BE]">
+                      <Phone className="w-4 h-4 text-[#C97870]" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-[#633C38] uppercase font-bold">Call For Inquiries</p>
+                      <p className="text-[10px] text-[#8C5752] uppercase font-bold">Call For Inquiries</p>
                       <p className="text-xs sm:text-sm font-bold text-[#633C38]">{RESTAURANT_INFO.phone}</p>
                     </div>
                   </div>
                   <a
                     href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-                    className="px-3.5 py-1.5 rounded-full bg-[#633C38] text-[#F8F0E9] text-xs font-semibold hover:bg-[#C97870] transition-colors"
+                    className="px-3.5 py-1.5 rounded-full bg-[#C97870] text-[#FFFDFC] text-xs font-bold hover:bg-[#b5655d] transition-colors"
                   >
                     Call
                   </a>
                 </div>
 
                 {/* Timings */}
-                <div className="flex items-start gap-3 p-3.5 rounded-[6px_18px_6px_18px] bg-[#E8C5BE]/30 border border-[#E8C5BE]">
-                  <div className="w-8 h-8 rounded-full bg-[#C97870] text-[#F8F0E9] flex items-center justify-center shrink-0">
-                    <Clock className="w-3.5 h-3.5" />
+                <div className="flex items-start gap-3 p-4 rounded-2xl bg-[#F8F0E9] border border-[#E8C5BE]">
+                  <div className="w-9 h-9 rounded-xl bg-[#E8C5BE]/60 text-[#C97870] flex items-center justify-center shrink-0 border border-[#E8C5BE]">
+                    <Clock className="w-4 h-4 text-[#C97870]" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-[#633C38] uppercase font-bold">Timings</p>
+                    <p className="text-[10px] text-[#8C5752] uppercase font-bold">Timings</p>
                     <p className="text-xs sm:text-sm font-bold text-[#633C38]">{RESTAURANT_INFO.closingTime}</p>
-                    <p className="text-xs text-[#633C38]/60 mt-0.5">Breakfast, lunch, tea, and dinner served daily.</p>
+                    <p className="text-xs text-[#8C5752] mt-0.5">Breakfast, lunch, tea, and dinner served daily.</p>
                   </div>
                 </div>
 
                 {/* Payment */}
-                <div className="flex items-start gap-3 p-3.5 rounded-[18px_6px_18px_6px] bg-[#E8C5BE]/30 border border-[#E8C5BE]">
-                  <div className="w-8 h-8 rounded-full bg-[#C97870] text-[#F8F0E9] flex items-center justify-center shrink-0 font-bold">
-                    <Wallet className="w-3.5 h-3.5" />
+                <div className="flex items-start gap-3 p-4 rounded-2xl bg-[#F8F0E9] border border-[#E8C5BE]">
+                  <div className="w-9 h-9 rounded-xl bg-[#E8C5BE]/60 text-[#C97870] flex items-center justify-center shrink-0 border border-[#E8C5BE]">
+                    <Wallet className="w-4 h-4 text-[#C97870]" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-[#633C38] uppercase font-bold">Billing</p>
+                    <p className="text-[10px] text-[#8C5752] uppercase font-bold">Billing</p>
                     <p className="text-xs sm:text-sm font-bold text-[#633C38]">{RESTAURANT_INFO.priceRange}</p>
-                    <span className="inline-block mt-1 text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full bg-[#633C38] text-[#F8F0E9]">
+                    <span className="inline-block mt-1 text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full bg-[#E8C5BE] text-[#633C38]">
                       Cash Only
                     </span>
                   </div>
@@ -167,37 +163,33 @@ export const LocationContact: React.FC<LocationContactProps> = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-3 pt-4 border-t border-[#633C38]/10">
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+            <div className="flex gap-3 pt-4 border-t border-[#E8C5BE]">
+              <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#E8C5BE] hover:bg-[#C97870] text-[#633C38] hover:text-[#F8F0E9] font-semibold text-xs uppercase tracking-wider shadow-sm transition-all"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#FFFDFC] border border-[#E8C5BE] hover:bg-[#F8F0E9] text-[#633C38] font-bold text-xs uppercase tracking-wider transition-all"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>WhatsApp</span>
-              </motion.a>
+              </a>
 
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <a
                 href={googleMapsDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#C97870] hover:bg-[#B5675F] text-[#F8F0E9] font-semibold text-xs uppercase tracking-wider shadow-md shadow-[#C97870]/25 transition-all"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#C97870] hover:bg-[#b5655d] text-[#FFFDFC] font-bold text-xs uppercase tracking-wider shadow-md transition-all"
               >
                 <Navigation className="w-4 h-4" />
                 <span>Directions</span>
-              </motion.a>
+              </a>
             </div>
 
           </div>
 
-          {/* Right Column: Google Maps Iframe in Organic Curved Frame */}
+          {/* Right Column: Google Maps Iframe */}
           <div className="lg:col-span-7 flex flex-col">
-            <div className="relative w-full h-[400px] lg:h-full min-h-[400px] rounded-[20px_50px_20px_50px] overflow-hidden border-2 border-[#F8F0E9] shadow-xl bg-[#633C38]">
+            <div className="relative w-full h-[400px] lg:h-full min-h-[400px] rounded-3xl overflow-hidden border border-[#E8C5BE] shadow-md bg-[#FFFDFC]">
               <iframe
                 title="New Highway Chef Dhaba Rangia Map Location"
                 src="https://maps.google.com/maps?q=New%20Highway%20Chef%20Dhaba%20Rangia%20Assam&t=&z=14&ie=UTF8&iwloc=&output=embed"

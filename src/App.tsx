@@ -17,7 +17,6 @@ import { AdminPanel } from './components/AdminPanel';
 import {
   fetchGalleryPhotos,
   fetchMenuItems,
-  logCustomerOrder
 } from './services/supabaseService';
 import { GalleryItem, MenuItem, GALLERY_ITEMS, INITIAL_MENU_ITEMS } from './data/restaurantData';
 
@@ -29,7 +28,6 @@ export default function App() {
   // Supabase Dynamic Data States
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(GALLERY_ITEMS);
   const [menuItems, setMenuItems] = useState<MenuItem[]>(INITIAL_MENU_ITEMS);
-  const [isLiveFromSupabase, setIsLiveFromSupabase] = useState(false);
 
   // Load from Supabase on mount
   const loadSupabaseData = useCallback(async () => {
@@ -45,7 +43,6 @@ export default function App() {
       if (menuRes.items && menuRes.items.length > 0) {
         setMenuItems(menuRes.items);
       }
-      setIsLiveFromSupabase(galleryRes.isLive || menuRes.isLive);
     } catch (err) {
       console.warn('Using default restaurant data', err);
     }
@@ -146,33 +143,33 @@ export default function App() {
           onOpenOrder={handleOpenOrder}
         />
 
-        {/* 5. Complete Interactive Menu (Dynamic from Superbase) */}
+        {/* 6. Complete Interactive Menu */}
         <InteractiveMenu
           items={menuItems}
           onAddToCart={handleAddToCart}
           onOpenOrder={handleOpenOrder}
         />
 
-        {/* 6. Special Food Experience (Maroon Full-Width) */}
+        {/* 7. Special Food Experience */}
         <FoodExperience onOpenOrder={() => setIsOrderModalOpen(true)} />
 
-        {/* 7. Why Visit Us (Circular Icons & Organic Shapes) */}
+        {/* 8. Why Visit Us */}
         <WhyVisitUs />
 
-        {/* 8. Food Gallery (Dynamic from Superbase + Full Lightbox) */}
+        {/* 9. Food Gallery */}
         <FoodGallery items={galleryItems} />
 
-        {/* 9. Google Reviews Section (3.8 Rating, 1,039 Reviews) */}
+        {/* 10. Google Reviews Section */}
         <ReviewsSection />
 
-        {/* 10. Location and Contact (Curved Map, Timings, Cash only) */}
+        {/* 11. Location and Contact */}
         <LocationContact onOpenOrder={() => setIsOrderModalOpen(true)} />
       </main>
 
-      {/* 11. Footer with Superbase Launcher */}
+      {/* 12. Footer with Admin Launcher */}
       <Footer onOpenAdmin={() => setIsAdminPanelOpen(true)} />
 
-      {/* 12. Ordering Modal (WhatsApp & Phone with Supabase logging) */}
+      {/* 13. Ordering Modal */}
       <OrderModal
         isOpen={isOrderModalOpen}
         onClose={() => setIsOrderModalOpen(false)}
@@ -182,7 +179,7 @@ export default function App() {
         onClearCart={handleClearCart}
       />
 
-      {/* 13. Superbase Admin Studio / Photo & Details Manager */}
+      {/* 14. Admin Studio / Photo & Details Manager */}
       <AdminPanel
         isOpen={isAdminPanelOpen}
         onClose={() => setIsAdminPanelOpen(false)}
@@ -191,7 +188,7 @@ export default function App() {
         onRefreshData={loadSupabaseData}
       />
 
-      {/* 14. Back to Top Floating Controls */}
+      {/* 15. Back to Top Floating Controls */}
       <BackToTop onOpenOrder={() => setIsOrderModalOpen(true)} />
 
     </div>

@@ -1,43 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-
-  --color-brick: #C97870;
-  --color-brick-dark: #A65A52;
-  --color-brick-light: #D89189;
-
-  --color-ivory: #F8F0E9;
-  --color-ivory-soft: #FCF7F3;
-  --color-ivory-tint: #EFE4DA;
-
-  --color-cocoa: #633C38;
-  --color-cocoa-dark: #472926;
-  --color-cocoa-light: #7E514C;
-
-  --color-rose: #E8C5BE;
-  --color-rose-dark: #D4A9A0;
-  --color-rose-light: #F3DDD8;
-
-  --color-[#FFFDFC]: #FFFDFC;
-}
-
-@layer utilities {
-  .curve-blob-1 {
-    border-radius: 60px 24px 60px 24px;
-  }
-  .curve-blob-2 {
-    border-radius: 24px 60px 24px 60px;
-  }
-  .curve-organic-hero {
-    border-radius: 70px 24px 90px 30px;
-  }
-  .curve-organic-leaf {
-    border-radius: 80px 20px 80px 20px;
-  }
-}
-
 @keyframes floatGentle {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -47,27 +9,8 @@
   }
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.35;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
-}
-
 .animate-float-slow {
   animation: floatGentle 7s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: floatGentle 8s ease-in-out 2s infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 6s ease-in-out infinite;
 }
 
 html {
@@ -78,5 +21,5 @@ html {
 
 ::selection {
   background-color: #C97870;
-  color: #FFFDFC;
+  color: #F8F0E9;
 }

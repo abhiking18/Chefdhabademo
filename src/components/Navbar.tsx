@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, UtensilsCrossed, ShoppingBag, MapPin } from 'lucide-react';
+import { Menu, X, Phone, ShoppingBag } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -9,26 +9,16 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { label: 'Home', href: '#hero' },
     { label: 'Our Story', href: '#story' },
-    { label: 'Specialties', href: '#specialties' },
     { label: 'Menu', href: '#menu' },
-    { label: 'The Grounds', href: '#experience' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Specialties', href: '#specialties' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Reviews', href: '#reviews' },
-    { label: 'Visit', href: '#location' },
+    { label: 'Location', href: '#location' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -41,164 +31,146 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrder, cartCount }) => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#F8F0E9]/95 backdrop-blur-md shadow-sm py-3 border-b border-[#E8C5BE]/50 text-[#633C38]'
-          : 'bg-[#633C38]/90 backdrop-blur-md py-4 border-b border-white/10 text-[#F8F0E9]'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 w-full max-w-[100vw] box-border bg-[#FAF4EC] border-b-[1.5px] border-[#E2D5C4] shadow-[0_4px_15px_rgba(0,0,0,0.08)]">
+      <div className="w-full max-w-7xl mx-auto px-4 py-2.5 sm:px-8 sm:py-3.5 box-border">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 w-full">
           
-          {/* Brand Wordmark with Uploaded Official Chef Logo */}
+          {/* BRAND MARK & LOGO (LEFT SIDE) */}
           <a
             href="#hero"
-            className="group flex items-center gap-3 text-left whitespace-nowrap shrink-0"
+            className="group flex items-center gap-2.5 text-left min-w-0 shrink"
           >
-            <div className="w-10 h-10 rounded-full bg-[#FFFDFC] p-1 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform border border-[#E8C5BE]/60 overflow-hidden">
+            {/* Sharper Circular Logo Badge */}
+            <div className="w-[42px] h-[42px] rounded-full border-2 border-[#D95326] bg-white p-[2px] shrink-0 flex items-center justify-center overflow-hidden shadow-sm">
               <img
                 src="/assets/aistudio/Gemini_Generated_Image_ngrixhngrixhngri_593f6bfe.png"
-                alt="New Highway Chef Dhaba Official Logo"
-                className="w-full h-full object-contain"
+                alt="New Highway Chef Dhaba Logo"
+                className="w-full h-full object-cover scale-[1.15]"
               />
             </div>
-            <div className="flex flex-col">
-              <span className={`font-serif text-base sm:text-lg font-bold tracking-tight transition-colors leading-none ${
-                isScrolled ? 'text-[#633C38] group-hover:text-[#C97870]' : 'text-[#F8F0E9] group-hover:text-[#E8C5BE]'
-              }`}>
+
+            {/* Brand Title & Subtitle */}
+            <div className="flex flex-col min-w-0">
+              <span
+                className="font-extrabold text-[14px] sm:text-[18px] text-[#2A1810] leading-[1.15] tracking-[0.02em] group-hover:text-[#B85038] transition-colors truncate"
+                style={{ fontFamily: "'Cinzel', 'Playfair Display', serif" }}
+              >
                 NEW HIGHWAY CHEF DHABA
               </span>
-              <span className="text-[9px] tracking-widest uppercase font-semibold text-[#C97870] mt-1 flex items-center gap-1">
-                <MapPin className="w-2.5 h-2.5 text-[#C97870]" />
-                <span>NH-31 · Rangia, Assam</span>
+              <span
+                className="text-[10px] sm:text-[11px] font-semibold tracking-[0.12em] uppercase text-[#B85038] mt-0.5 leading-none"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                NH-31 RANGIA, ASSAM
               </span>
             </div>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className={`hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest font-semibold ${
-            isScrolled ? 'text-[#633C38]/85' : 'text-[#F8F0E9]/90'
-          }`}>
+          {/* DESKTOP NAVIGATION LINKS (CENTER) */}
+          <nav className="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-[#2A1810]">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className={`relative py-1 transition-colors group ${
-                  isScrolled ? 'hover:text-[#C97870]' : 'hover:text-[#E8C5BE]'
-                }`}
+                className="relative py-1 transition-colors hover:text-[#B85038] whitespace-nowrap shrink-0 group"
               >
                 <span>{link.label}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C97870] rounded-full group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B85038] rounded-full group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </nav>
 
-          {/* Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          {/* RIGHT ACTION BUTTONS & HAMBURGER MENU (RIGHT SIDE) */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            
+            {/* Phone Link (Desktop XL) */}
             <a
               href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-              className={`hidden xl:flex items-center gap-2 text-xs font-semibold transition-colors px-3.5 py-2 rounded-full border ${
-                isScrolled
-                  ? 'text-[#633C38] hover:text-[#C97870] border-[#633C38]/20 hover:border-[#C97870]/40'
-                  : 'text-[#F8F0E9] hover:text-[#E8C5BE] border-white/20 hover:border-[#E8C5BE]/40'
-              }`}
+              className="hidden xl:flex items-center gap-1.5 text-xs font-semibold text-[#2A1810] hover:text-[#B85038] transition-colors px-3 py-1.5 rounded-full border border-[#E2D5C4] bg-white shadow-sm"
             >
-              <Phone className="w-3.5 h-3.5 text-[#C97870]" />
+              <Phone className="w-3.5 h-3.5 text-[#B85038]" />
               <span>{RESTAURANT_INFO.phone}</span>
             </a>
 
+            {/* High-Converting Pill Button */}
             <motion.button
               whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => onOpenOrder()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#FFFDFC] bg-[#C97870] hover:bg-[#A65A52] rounded-full shadow-md shadow-[#C97870]/30 transition-all cursor-pointer border border-[#E8C5BE]/40"
+              className="inline-flex items-center gap-1.5 bg-[#C84B31] hover:bg-[#b33e26] text-white font-bold text-[11px] sm:text-xs px-3 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-[0_2px_8px_rgba(200,75,49,0.3)] transition-all cursor-pointer uppercase tracking-wider shrink-0"
             >
-              <ShoppingBag className="w-3.5 h-3.5 text-[#FFFDFC]" />
-              <span>Order Online</span>
+              <ShoppingBag className="w-3.5 h-3.5 text-white" />
+              <span className="inline sm:hidden">ORDER</span>
+              <span className="hidden sm:inline">ORDER ONLINE</span>
               {cartCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-[#633C38] text-[#FFFDFC] text-[10px] font-bold flex items-center justify-center">
+                <span className="w-4 h-4 rounded-full bg-[#2A1810] text-white text-[9px] font-bold flex items-center justify-center ml-0.5">
                   {cartCount}
                 </span>
               )}
             </motion.button>
-          </div>
 
-          {/* Mobile Hamburger & Quick Order */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={() => onOpenOrder()}
-              className="p-2 rounded-full bg-[#C97870] text-[#FFFDFC] relative sm:hidden border border-white/20 shadow-md"
-              aria-label="Order food"
-            >
-              <UtensilsCrossed className="w-4 h-4 text-[#FFFDFC]" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#633C38] text-[#FFFDFC] text-[9px] font-bold flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-
+            {/* Hamburger Menu Tap Button (Mobile & Tablet) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-lg transition-colors cursor-pointer ${
-                isScrolled ? 'text-[#633C38] hover:bg-[#E8C5BE]/30' : 'text-[#F8F0E9] hover:bg-white/10'
-              }`}
-              aria-label="Toggle menu"
+              className="w-[38px] h-[38px] rounded-lg border border-[#DFD3C3] bg-white text-[#2A1810] hover:bg-[#FAF4EC] flex items-center justify-center cursor-pointer shadow-sm transition-colors shrink-0 lg:hidden"
+              aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#2A1810]" /> : <Menu className="w-5 h-5 text-[#2A1810]" />}
             </button>
+
           </div>
 
         </div>
+
+        {/* MOBILE NAVIGATION DRAWER */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden mt-3 pt-3 border-t border-[#E2D5C4] overflow-hidden"
+            >
+              <nav className="flex flex-col gap-2 pb-3">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="text-xs font-bold uppercase tracking-wider text-[#2A1810] hover:text-[#B85038] py-2 border-b border-[#E2D5C4]/50 flex items-center justify-between"
+                  >
+                    <span>{link.label}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C84B31]" />
+                  </a>
+                ))}
+
+                <div className="pt-2 flex flex-col gap-2">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenOrder();
+                    }}
+                    className="w-full py-2.5 px-4 rounded-full bg-[#C84B31] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                  >
+                    <ShoppingBag className="w-4 h-4 text-white" />
+                    <span>Order Online {cartCount > 0 ? `(${cartCount})` : ''}</span>
+                  </button>
+
+                  <a
+                    href={`tel:${RESTAURANT_INFO.phoneRaw}`}
+                    className="w-full py-2 px-4 rounded-full border border-[#E2D5C4] bg-white text-[#2A1810] text-center text-xs font-bold flex items-center justify-center gap-1.5"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-[#B85038]" />
+                    <span>Call {RESTAURANT_INFO.phone}</span>
+                  </a>
+                </div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
-
-      {/* Mobile Drawer with AnimatePresence */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#F8F0E9] text-[#633C38] border-b border-[#E8C5BE]/40 shadow-xl px-6 py-5 overflow-hidden"
-          >
-            <nav className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className="text-xs uppercase tracking-widest font-semibold text-[#633C38] hover:text-[#C97870] py-2 border-b border-[#633C38]/10 flex items-center justify-between"
-                >
-                  <span>{link.label}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C97870]" />
-                </a>
-              ))}
-              <div className="pt-3 flex flex-col gap-2.5">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenOrder();
-                  }}
-                  className="w-full py-3 px-4 rounded-full bg-[#C97870] text-[#FFFDFC] text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer"
-                >
-                  <ShoppingBag className="w-4 h-4 text-[#FFFDFC]" />
-                  <span>Order Online {cartCount > 0 ? `(${cartCount})` : ''}</span>
-                </button>
-
-                <a
-                  href={`tel:${RESTAURANT_INFO.phoneRaw}`}
-                  className="w-full py-2.5 px-4 rounded-full border border-[#633C38]/30 text-[#633C38] font-semibold text-center text-xs flex items-center justify-center gap-1.5"
-                >
-                  <Phone className="w-3.5 h-3.5 text-[#C97870]" />
-                  <span>Call {RESTAURANT_INFO.phone}</span>
-                </a>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 };
